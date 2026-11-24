@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Custom subtle scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #F7F0E6;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #D9A6A0;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #722F3E;
+  }
+}
+
+/* Vintage Paper & Deckle Edge Effects */
+.paper-texture {
+  background-color: #FAF6F0;
+  background-image: radial-gradient(#DEC7AA 0.75px, transparent 0.75px), radial-gradient(#DEC7AA 0.75px, #FAF6F0 0.75px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+}
+
+.vintage-card {
+  background-color: #FAF6F0;
+  border: 1px solid rgba(128, 107, 90, 0.15);
+  box-shadow: 0 10px 30px -10px rgba(41, 37, 34, 0.08), 0 1px 3px rgba(41, 37, 34, 0.05);
+}
+
+.vintage-stamp {
+  border: 2px dashed #D9A6A0;
+  padding: 8px;
+  background: rgba(247, 240, 230, 0.7);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vintage-ticket-edge {
+  position: relative;
+  background: #FAF6F0;
+}
+.vintage-ticket-edge::before,
+.vintage-ticket-edge::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  background-color: #F7F0E6;
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+.vintage-ticket-edge::before {
+  left: -10px;
+}
+.vintage-ticket-edge::after {
+  right: -10px;
+}
+
+/* Washi tape illusion */
+.washi-tape {
+  position: absolute;
+  height: 28px;
+  width: 110px;
+  background: rgba(217, 166, 160, 0.45);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  backdrop-filter: blur(1px);
+  transform: rotate(-3deg);
+  z-index: 10;
+}
+
+/* Floating animation */
+@keyframes gentle-float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+}
+
+.animate-gentle-float {
+  animation: gentle-float 6s ease-in-out infinite;
+}
+
+/* Subtle glow */
+.rose-glow {
+  box-shadow: 0 0 40px rgba(217, 166, 160, 0.35);
+}
