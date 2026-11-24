@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Bookmark, Volume2, VolumeX, RotateCcw, X, Heart } from 'lucide-react';
 import { romanticAudio } from '../utils/audioPlayer';
-import { storybookData } from '../data/storybook';
+import { storybookData, bookSpreads, getTotalSpreads } from '../data/storybook';
 
 interface PageNavigationProps {
-  currentPage: number; // 0 = Cover, 1..5 = Chapters 1..5, 6 = The Letter, 7 = Final Page
-  totalPages: number;
+  currentPage: number; // 0 = Cover, 1..7 = Spreads 1..7
+  totalPages?: number;
   onNext: () => void;
   onPrev: () => void;
   onJumpToPage: (page: number) => void;
@@ -16,7 +16,6 @@ interface PageNavigationProps {
 
 export const PageNavigation: React.FC<PageNavigationProps> = ({
   currentPage,
-  totalPages,
   onNext,
   onPrev,
   onJumpToPage,
@@ -25,6 +24,7 @@ export const PageNavigation: React.FC<PageNavigationProps> = ({
 }) => {
   const [isAudioPlaying, setIsAudioPlaying] = useState<boolean>(romanticAudio.getIsPlaying());
   const [tocOpen, setTocOpen] = useState<boolean>(false);
+  const totalSpreads = getTotalSpreads();
 
   const toggleAudio = async () => {
     const active = await romanticAudio.toggle();
@@ -33,13 +33,11 @@ export const PageNavigation: React.FC<PageNavigationProps> = ({
 
   const tableOfContents = [
     { page: 0, label: "The Book Cover", badge: "Cover" },
-    { page: 1, label: "Every beautiful story begins somewhere", badge: "Page 01 • The Beginning" },
-    { page: 2, label: "And then, we became our own little world", badge: "Page 02 • Our Little World" },
-    { page: 3, label: "Not every road was easy", badge: "Page 03 • The Unexpected Routes" },
-    { page: 4, label: "After all the chapters, it's still you", badge: "Page 04 • Still My Favourite Person" },
-    { page: 5, label: "Today, the story celebrates YOU!", badge: "Page 05 • The Birthday Chapter" },
-    { page: 6, label: "A Letter From My Heart (To Nannaaaaa)", badge: "The Letter • Deep Love" },
-    { page: 7, label: "Our story is still going places", badge: "The Final Page • Forever Us" },
+    ...bookSpreads.map((s) => ({
+      page: s.spreadIndex,
+      label: s.tocLabel,
+      badge: s.tocBadge,
+    })),
   ];
 
   return (
@@ -50,7 +48,7 @@ export const PageNavigation: React.FC<PageNavigationProps> = ({
         <button
           onClick={() => setTocOpen(true)}
           disabled={isAnimating}
-          className="pointer-events-auto group flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF5EC]/95 backdrop-blur-md border border-[#DEC7AA] text-[#722F3E] hover:text-[#5A2531] shadow-md transition-all hover:scale-105 disabled:opacity-50"
+          className="pointer-events-auto group flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF5EC]/95 backdrop-blur-md border border-[#DEC7AA] text-[#722F3E] hover:text-[#5A2531] shadow-md transition-all hover:scale-105 disabled:opacity-50 cursor-pointer"
           title="Open Table of Contents"
         >
           <Bookmark className="w-4 h-4 text-[#C8A97E] group-hover:scale-110 transition-transform fill-[#C8A97E]" />
@@ -65,7 +63,7 @@ export const PageNavigation: React.FC<PageNavigationProps> = ({
             <button
               onClick={onReplay}
               disabled={isAnimating}
-              className="p-2 rounded-full bg-[#FAF5EC]/95 backdrop-blur-md border border-[#DEC7AA] text-[#806B5A] hover:text-[#722F3E] shadow-md transition-all hover:scale-105 disabled:opacity-50 hidden sm:flex"
+              className="p-2 rounded-full bg-[#FAF5EC]/95 backdrop-blur-md border border-[#DEC7AA] text-[#806B5A] hover:text-[#722F3E] shadow-md transition-all hover:scale-105 disabled:opacity-50 cursor-pointer hidden sm:flex"
               title="Return to Cover"
             >
               <RotateCcw className="w-3.5 h-3.5" />
@@ -74,7 +72,7 @@ export const PageNavigation: React.FC<PageNavigationProps> = ({
 
           <button
             onClick={toggleAudio}
-            className={`flex items-center gap-2 px-3.5 py-1.5 rounded-full border shadow-md transition-all text-xs font-serif ${
+            className={`flex items-center gap-2 px-3.5 py-1.5 rounded-full border shadow-md transition-all text-xs font-serif cursor-pointer ${
               isAudioPlaying
                 ? 'bg-[#722F3E] text-[#FBF7EE] border-[#722F3E]'
                 : 'bg-[#FAF5EC]/95 backdrop-blur-md text-[#806B5A] border-[#DEC7AA] hover:text-[#722F3E]'
@@ -107,7 +105,7 @@ export const PageNavigation: React.FC<PageNavigationProps> = ({
             <button
               onClick={onPrev}
               disabled={currentPage <= 0 || isAnimating}
-              className="flex items-center gap-1.5 text-xs font-serif text-[#722F3E] hover:text-[#5A2531] disabled:opacity-30 disabled:pointer-events-none transition-all hover:-translate-x-0.5"
+              className="flex items-center gap-1.5 text-xs font-serif text-[#722F3E] hover:text-[#5A2531] disabled:opacity-30 disabled:pointer-events-none transition-all hover:-translate-x-0.5 cursor-pointer"
               aria-label="Turn to previous page"
             >
               <ChevronLeft className="w-4 h-4" />
@@ -117,17 +115,21 @@ export const PageNavigation: React.FC<PageNavigationProps> = ({
             {/* Subtle Printed Page Counter */}
             <div className="flex items-center gap-2 text-xs font-serif text-[#806B5A] px-2 sm:px-4 border-x border-[#DEC7AA]/60">
               <span className="text-[#722F3E] font-bold">
-                {currentPage === 6 ? 'The Letter' : currentPage === 7 ? 'The End' : `Page 0${currentPage}`}
+                {currentPage === 6
+                  ? 'The Letter'
+                  : currentPage === 7
+                  ? 'The Final Page'
+                  : `Spread 0${currentPage}`}
               </span>
               <span>of</span>
-              <span>0{totalPages}</span>
+              <span>0{totalSpreads}</span>
             </div>
 
             {/* Next Page Turn Button */}
             <button
               onClick={onNext}
-              disabled={currentPage >= totalPages || isAnimating}
-              className="flex items-center gap-1.5 text-xs font-serif text-[#722F3E] hover:text-[#5A2531] disabled:opacity-30 disabled:pointer-events-none transition-all hover:translate-x-0.5"
+              disabled={currentPage >= totalSpreads || isAnimating}
+              className="flex items-center gap-1.5 text-xs font-serif text-[#722F3E] hover:text-[#5A2531] disabled:opacity-30 disabled:pointer-events-none transition-all hover:translate-x-0.5 cursor-pointer"
               aria-label="Turn to next page"
             >
               <span className="hidden sm:inline font-medium">Turn Page ›</span>
@@ -156,7 +158,7 @@ export const PageNavigation: React.FC<PageNavigationProps> = ({
             >
               <button
                 onClick={() => setTocOpen(false)}
-                className="absolute top-4 right-4 p-1.5 text-[#806B5A] hover:text-[#722F3E] rounded-full transition-colors"
+                className="absolute top-4 right-4 p-1.5 text-[#806B5A] hover:text-[#722F3E] rounded-full transition-colors cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -178,7 +180,7 @@ export const PageNavigation: React.FC<PageNavigationProps> = ({
                       onJumpToPage(item.page);
                       setTocOpen(false);
                     }}
-                    className={`w-full text-left p-3 rounded-xl transition-all flex items-center justify-between text-xs sm:text-sm font-serif ${
+                    className={`w-full text-left p-3 rounded-xl transition-all flex items-center justify-between text-xs sm:text-sm font-serif cursor-pointer ${
                       currentPage === item.page
                         ? 'bg-[#722F3E] text-[#FBF7EE] font-semibold shadow-sm'
                         : 'bg-[#F5ECE0]/60 text-[#292522] hover:bg-[#EADCC8]'

@@ -1,21 +1,21 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { BookCover } from './BookCover';
-import { PageTurnController, type PageTurnHandle } from './PageTurnController';
+import { PageTurnEngine, type PageTurnEngineHandle } from './PageTurnEngine';
 import { PageNavigation } from './PageNavigation';
-import { storybookData } from '../data/storybook';
+import { storybookData, getTotalSpreads } from '../data/storybook';
 import { romanticAudio } from '../utils/audioPlayer';
 
 export const Storybook: React.FC = () => {
   // Page 0: Cover
-  // Page 1..5: Story Chapters 1 to 5
-  // Page 6: The Letter from the Heart
-  // Page 7: The Final Page (Happy Birthday Tejjaaaa)
+  // Spread 1..5: Story Chapters 1 to 5
+  // Spread 6: The Letter from the Heart (To Nannaaaaa)
+  // Spread 7: The Final Page (Happy Birthday Tejjaaaa)
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
-  const totalPages = 7;
+  const totalSpreads = getTotalSpreads();
 
-  const turnControllerRef = useRef<PageTurnHandle>(null);
+  const turnEngineRef = useRef<PageTurnEngineHandle>(null);
 
   useEffect(() => {
     // Initialize romantic audio track
@@ -27,29 +27,33 @@ export const Storybook: React.FC = () => {
     if (isAnimating) return;
     if (currentPage === 0) {
       setCurrentPage(1);
-    } else if (turnControllerRef.current) {
-      turnControllerRef.current.turnNext();
-    } else if (currentPage < totalPages) {
-      setCurrentPage((prev) => Math.min(totalPages, prev + 1));
+    } else if (turnEngineRef.current) {
+      turnEngineRef.current.turnNext();
     }
-  }, [currentPage, totalPages, isAnimating]);
+  }, [currentPage, isAnimating]);
 
   const handlePrev = useCallback(() => {
     if (isAnimating) return;
     if (currentPage === 1) {
       setCurrentPage(0);
-    } else if (turnControllerRef.current) {
-      turnControllerRef.current.turnPrev();
-    } else if (currentPage > 0) {
-      setCurrentPage((prev) => Math.max(0, prev - 1));
+    } else if (turnEngineRef.current) {
+      turnEngineRef.current.turnPrev();
     }
   }, [currentPage, isAnimating]);
 
   const handleJumpToPage = useCallback((targetPage: number) => {
     if (isAnimating) return;
-    setCurrentPage(Math.max(0, Math.min(targetPage, totalPages)));
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [totalPages, isAnimating]);
+    if (targetPage === 0) {
+      setCurrentPage(0);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (currentPage === 0) {
+      setCurrentPage(targetPage);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (turnEngineRef.current) {
+      turnEngineRef.current.jumpToSpread(targetPage);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [currentPage, isAnimating]);
 
   const handleReplay = useCallback(() => {
     if (isAnimating) return;
@@ -91,7 +95,7 @@ export const Storybook: React.FC = () => {
       {/* Literary Controls (Table of Contents, Audio Toggle, Page Indicators & Turning Buttons) */}
       <PageNavigation
         currentPage={currentPage}
-        totalPages={totalPages}
+        totalPages={totalSpreads}
         onNext={handleNext}
         onPrev={handlePrev}
         onJumpToPage={handleJumpToPage}
@@ -104,30 +108,29 @@ export const Storybook: React.FC = () => {
         <AnimatePresence mode="wait">
           {currentPage === 0 ? (
             <motion.div
-              key="book-cover"
-              initial={{ opacity: 0, scale: 0.95 }}
+              key="book-cover-view"
+              initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.97 }}
-              transition={{ duration: 0.6 }}
+              exit={{ opacity: 0, scale: 0.98 }}
+              transition={{ duration: 0.5 }}
               className="w-full flex justify-center"
             >
               <BookCover onOpenBook={() => handleJumpToPage(1)} />
             </motion.div>
           ) : (
             <motion.div
-              key="book-pages"
+              key="book-spread-view"
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -15 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.5 }}
               className="w-full"
             >
-              <PageTurnController
-                ref={turnControllerRef}
-                currentPage={currentPage}
-                totalPages={totalPages}
-                onPageChange={setCurrentPage}
-                onReplay={handleReplay}
+              <PageTurnEngine
+                ref={turnEngineRef}
+                currentSpread={currentPage}
+                onSpreadChange={setCurrentPage}
+                onReturnToCover={handleReplay}
                 isAnimating={isAnimating}
                 setIsAnimating={setIsAnimating}
               />
