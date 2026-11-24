@@ -7,17 +7,19 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: #F7F4EE;
+    color: #242321;
   }
 
-  /* Custom subtle scrollbar */
+  /* Custom subtle luxury scrollbar */
   ::-webkit-scrollbar {
     width: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: #1F1916;
+    background: #F7F4EE;
   }
   ::-webkit-scrollbar-thumb {
-    background: #722F3E;
+    background: #783D48;
     border-radius: 3px;
   }
   ::-webkit-scrollbar-thumb:hover {
@@ -25,53 +27,20 @@
   }
 }
 
-/* Storybook 3D Container & Perspective */
-.book-perspective {
-  perspective: 2400px;
-  transform-style: preserve-3d;
+/* Editorial Drop-Cap for chapter openings */
+.drop-cap::first-letter {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 3.8rem;
+  line-height: 0.8;
+  float: left;
+  margin-right: 0.75rem;
+  margin-top: 0.15rem;
+  color: #783D48;
+  font-weight: 700;
+  text-shadow: 1px 1px 0px rgba(215, 184, 177, 0.4);
 }
 
-/* Realistic Paper Textures */
-.book-paper {
-  background-color: #FAF5EC;
-  background-image: 
-    radial-gradient(#DEC7AA 0.65px, transparent 0.65px), 
-    radial-gradient(#DEC7AA 0.65px, #FAF5EC 0.65px);
-  background-size: 24px 24px;
-  background-position: 0 0, 12px 12px;
-}
-
-/* Subtle book page stack depth (layered page edges effect) */
-.book-page-stack-left {
-  box-shadow: 
-    -1px 0 0 #D9C5AB,
-    -3px 0 0 #FAF5EC,
-    -4px 0 0 #D9C5AB,
-    -6px 0 0 #FAF5EC,
-    -8px 0 0 #D9C5AB,
-    -12px 10px 30px rgba(0, 0, 0, 0.45);
-}
-
-.book-page-stack-right {
-  box-shadow: 
-    1px 0 0 #D9C5AB,
-    3px 0 0 #FAF5EC,
-    4px 0 0 #D9C5AB,
-    6px 0 0 #FAF5EC,
-    8px 0 0 #D9C5AB,
-    12px 10px 30px rgba(0, 0, 0, 0.45);
-}
-
-/* Central book crease / gutter shadow for realistic open book */
-.book-gutter-left {
-  background: linear-gradient(to left, rgba(41, 37, 34, 0.18) 0%, rgba(41, 37, 34, 0.06) 6%, transparent 22%);
-}
-
-.book-gutter-right {
-  background: linear-gradient(to right, rgba(41, 37, 34, 0.22) 0%, rgba(41, 37, 34, 0.07) 6%, transparent 22%);
-}
-
-/* Vintage Photo Mounting Corners */
+/* Vintage Editorial Photo Mounting Corners */
 .photo-mount-corner {
   position: absolute;
   width: 14px;
@@ -83,68 +52,58 @@
 .photo-mount-corner.tl {
   top: -2px;
   left: -2px;
-  border-top: 2.5px solid #806B5A;
-  border-left: 2.5px solid #806B5A;
+  border-top: 2.5px solid #857362;
+  border-left: 2.5px solid #857362;
 }
 .photo-mount-corner.tr {
   top: -2px;
   right: -2px;
-  border-top: 2.5px solid #806B5A;
-  border-right: 2.5px solid #806B5A;
+  border-top: 2.5px solid #857362;
+  border-right: 2.5px solid #857362;
 }
 .photo-mount-corner.bl {
   bottom: -2px;
   left: -2px;
-  border-bottom: 2.5px solid #806B5A;
-  border-left: 2.5px solid #806B5A;
+  border-bottom: 2.5px solid #857362;
+  border-left: 2.5px solid #857362;
 }
 .photo-mount-corner.br {
   bottom: -2px;
   right: -2px;
-  border-bottom: 2.5px solid #806B5A;
-  border-right: 2.5px solid #806B5A;
+  border-bottom: 2.5px solid #857362;
+  border-right: 2.5px solid #857362;
 }
 
-/* Drop-cap for storybook chapter openings */
-.drop-cap::first-letter {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 3.8rem;
-  line-height: 0.8;
-  float: left;
-  margin-right: 0.65rem;
-  margin-top: 0.2rem;
-  color: #722F3E;
-  font-weight: 700;
-  text-shadow: 1px 1px 0px rgba(200, 169, 126, 0.4);
-}
-
-/* Antique Hardcover Texture */
-.cover-leather {
-  background: radial-gradient(circle at 50% 30%, #561F2B 0%, #3B121A 60%, #260A10 100%);
-  box-shadow: 
-    inset 0 0 80px rgba(0, 0, 0, 0.6),
-    0 30px 60px -15px rgba(0, 0, 0, 0.8),
-    0 0 0 2px #C8A97E;
-}
-
-/* Gold foil embossed effect */
-.gold-foil {
-  background: linear-gradient(135deg, #DFCA9B 0%, #F5E6C4 30%, #C8A97E 60%, #9B7744 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 1px 1px rgba(0,0,0,0.4));
-}
-
-/* Lined letter stationery */
-.letter-parchment {
-  background-color: #FCF8F2;
+/* Editorial Lined Letter Stationery */
+.letter-stationery {
+  background-color: #FCFAF6;
   background-image: repeating-linear-gradient(
     transparent,
     transparent 31px,
-    rgba(217, 166, 160, 0.22) 31px,
-    rgba(217, 166, 160, 0.22) 32px
+    rgba(215, 184, 177, 0.22) 31px,
+    rgba(215, 184, 177, 0.22) 32px
   );
   line-height: 32px;
+}
+
+/* Subtle Film Grain Texture Overlay */
+.editorial-paper {
+  background-color: #FCFAF6;
+  background-image: 
+    radial-gradient(#E5DFD4 0.65px, transparent 0.65px), 
+    radial-gradient(#E5DFD4 0.65px, #FCFAF6 0.65px);
+  background-size: 24px 24px;
+  background-position: 0 0, 12px 12px;
+}
+
+/* Washi Tape Accent */
+.washi-tape {
+  position: absolute;
+  height: 16px;
+  background-color: rgba(200, 169, 126, 0.35);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+  pointer-events: none;
+  z-index: 10;
 }
 
 /* Accessibility: Support prefers-reduced-motion */
