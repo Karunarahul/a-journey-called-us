@@ -4,18 +4,24 @@ import { ChevronLeft, ChevronRight, Bookmark, Volume2, VolumeX, RotateCcw, X, He
 import { romanticAudio } from '../utils/audioPlayer';
 import { storybookData } from '../data/storybook';
 
-interface StorybookControlsProps {
+interface PageNavigationProps {
   currentPage: number; // 0 = Cover, 1..5 = Chapters 1..5, 6 = The Letter, 7 = Final Page
   totalPages: number;
-  onPageChange: (newPage: number) => void;
+  onNext: () => void;
+  onPrev: () => void;
+  onJumpToPage: (page: number) => void;
   onReplay: () => void;
+  isAnimating: boolean;
 }
 
-export const StorybookControls: React.FC<StorybookControlsProps> = ({
+export const PageNavigation: React.FC<PageNavigationProps> = ({
   currentPage,
   totalPages,
-  onPageChange,
+  onNext,
+  onPrev,
+  onJumpToPage,
   onReplay,
+  isAnimating,
 }) => {
   const [isAudioPlaying, setIsAudioPlaying] = useState<boolean>(romanticAudio.getIsPlaying());
   const [tocOpen, setTocOpen] = useState<boolean>(false);
@@ -23,18 +29,6 @@ export const StorybookControls: React.FC<StorybookControlsProps> = ({
   const toggleAudio = async () => {
     const active = await romanticAudio.toggle();
     setIsAudioPlaying(active);
-  };
-
-  const handleNext = () => {
-    if (currentPage < totalPages) {
-      onPageChange(currentPage + 1);
-    }
-  };
-
-  const handlePrev = () => {
-    if (currentPage > 0) {
-      onPageChange(currentPage - 1);
-    }
   };
 
   const tableOfContents = [
@@ -50,12 +44,13 @@ export const StorybookControls: React.FC<StorybookControlsProps> = ({
 
   return (
     <>
-      {/* Top Floating Literary Bar (Audio & Table of Contents Ribbon) */}
+      {/* Top Floating Literary Navigation Bar */}
       <header className="fixed top-4 left-0 right-0 z-40 px-4 sm:px-8 flex items-center justify-between pointer-events-none">
         {/* Left: Bookmark Ribbon for Table of Contents */}
         <button
           onClick={() => setTocOpen(true)}
-          className="pointer-events-auto group flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF5EC]/90 backdrop-blur-md border border-[#DEC7AA] text-[#722F3E] hover:text-[#5A2531] shadow-md transition-all hover:scale-105"
+          disabled={isAnimating}
+          className="pointer-events-auto group flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF5EC]/95 backdrop-blur-md border border-[#DEC7AA] text-[#722F3E] hover:text-[#5A2531] shadow-md transition-all hover:scale-105 disabled:opacity-50"
           title="Open Table of Contents"
         >
           <Bookmark className="w-4 h-4 text-[#C8A97E] group-hover:scale-110 transition-transform fill-[#C8A97E]" />
@@ -64,12 +59,13 @@ export const StorybookControls: React.FC<StorybookControlsProps> = ({
           </span>
         </button>
 
-        {/* Right: Audio Toggle & Quick Replay */}
+        {/* Right: Audio Toggle & Return to Cover */}
         <div className="flex items-center gap-2.5 pointer-events-auto">
           {currentPage > 0 && (
             <button
               onClick={onReplay}
-              className="p-2 rounded-full bg-[#FAF5EC]/90 backdrop-blur-md border border-[#DEC7AA] text-[#806B5A] hover:text-[#722F3E] shadow-md transition-all hover:scale-105 hidden sm:flex"
+              disabled={isAnimating}
+              className="p-2 rounded-full bg-[#FAF5EC]/95 backdrop-blur-md border border-[#DEC7AA] text-[#806B5A] hover:text-[#722F3E] shadow-md transition-all hover:scale-105 disabled:opacity-50 hidden sm:flex"
               title="Return to Cover"
             >
               <RotateCcw className="w-3.5 h-3.5" />
@@ -81,9 +77,9 @@ export const StorybookControls: React.FC<StorybookControlsProps> = ({
             className={`flex items-center gap-2 px-3.5 py-1.5 rounded-full border shadow-md transition-all text-xs font-serif ${
               isAudioPlaying
                 ? 'bg-[#722F3E] text-[#FBF7EE] border-[#722F3E]'
-                : 'bg-[#FAF5EC]/90 backdrop-blur-md text-[#806B5A] border-[#DEC7AA] hover:text-[#722F3E]'
+                : 'bg-[#FAF5EC]/95 backdrop-blur-md text-[#806B5A] border-[#DEC7AA] hover:text-[#722F3E]'
             }`}
-            title={isAudioPlaying ? 'Mute romantic melody' : 'Play romantic melody'}
+            title={isAudioPlaying ? 'Mute melody' : 'Play melody'}
           >
             {isAudioPlaying ? (
               <>
@@ -100,24 +96,25 @@ export const StorybookControls: React.FC<StorybookControlsProps> = ({
         </div>
       </header>
 
-      {/* Bottom Floating Page Indicator & Turn Controls */}
+      {/* Bottom Floating Page Indicator & Physical Turn Controls */}
       {currentPage > 0 && (
         <nav
           aria-label="Storybook page navigation"
           className="fixed bottom-4 left-0 right-0 z-40 px-4 flex items-center justify-center pointer-events-none"
         >
           <div className="pointer-events-auto flex items-center gap-3 sm:gap-6 px-4 sm:px-6 py-2 rounded-full bg-[#FAF5EC]/95 backdrop-blur-md border border-[#DEC7AA] shadow-xl text-[#292522]">
-            {/* Previous Page Button */}
+            {/* Previous Page Turn Button */}
             <button
-              onClick={handlePrev}
-              className="flex items-center gap-1 text-xs font-serif text-[#722F3E] hover:text-[#5A2531] disabled:opacity-30 disabled:pointer-events-none transition-colors"
-              disabled={currentPage <= 0}
+              onClick={onPrev}
+              disabled={currentPage <= 0 || isAnimating}
+              className="flex items-center gap-1.5 text-xs font-serif text-[#722F3E] hover:text-[#5A2531] disabled:opacity-30 disabled:pointer-events-none transition-all hover:-translate-x-0.5"
+              aria-label="Turn to previous page"
             >
               <ChevronLeft className="w-4 h-4" />
-              <span className="hidden sm:inline">Previous</span>
+              <span className="hidden sm:inline font-medium">‹ Turn Back</span>
             </button>
 
-            {/* Subtle Page Counter */}
+            {/* Subtle Printed Page Counter */}
             <div className="flex items-center gap-2 text-xs font-serif text-[#806B5A] px-2 sm:px-4 border-x border-[#DEC7AA]/60">
               <span className="text-[#722F3E] font-bold">
                 {currentPage === 6 ? 'The Letter' : currentPage === 7 ? 'The End' : `Page 0${currentPage}`}
@@ -126,20 +123,21 @@ export const StorybookControls: React.FC<StorybookControlsProps> = ({
               <span>0{totalPages}</span>
             </div>
 
-            {/* Next Page Button */}
+            {/* Next Page Turn Button */}
             <button
-              onClick={handleNext}
-              className="flex items-center gap-1 text-xs font-serif text-[#722F3E] hover:text-[#5A2531] disabled:opacity-30 disabled:pointer-events-none transition-colors"
-              disabled={currentPage >= totalPages}
+              onClick={onNext}
+              disabled={currentPage >= totalPages || isAnimating}
+              className="flex items-center gap-1.5 text-xs font-serif text-[#722F3E] hover:text-[#5A2531] disabled:opacity-30 disabled:pointer-events-none transition-all hover:translate-x-0.5"
+              aria-label="Turn to next page"
             >
-              <span className="hidden sm:inline">Next</span>
+              <span className="hidden sm:inline font-medium">Turn Page ›</span>
               <ChevronRight className="w-4 h-4" />
             </button>
           </div>
         </nav>
       )}
 
-      {/* Table of Contents Antique Drawer Modal */}
+      {/* Table of Contents Modal */}
       <AnimatePresence>
         {tocOpen && (
           <motion.div
@@ -147,7 +145,7 @@ export const StorybookControls: React.FC<StorybookControlsProps> = ({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setTocOpen(false)}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/65 backdrop-blur-sm"
           >
             <motion.div
               initial={{ scale: 0.94, y: 15 }}
@@ -177,7 +175,7 @@ export const StorybookControls: React.FC<StorybookControlsProps> = ({
                   <button
                     key={item.page}
                     onClick={() => {
-                      onPageChange(item.page);
+                      onJumpToPage(item.page);
                       setTocOpen(false);
                     }}
                     className={`w-full text-left p-3 rounded-xl transition-all flex items-center justify-between text-xs sm:text-sm font-serif ${
