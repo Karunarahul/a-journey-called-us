@@ -11,92 +11,138 @@
 
   /* Custom subtle scrollbar */
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: #F7F0E6;
+    background: #1F1916;
   }
   ::-webkit-scrollbar-thumb {
-    background: #D9A6A0;
-    border-radius: 4px;
+    background: #722F3E;
+    border-radius: 3px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #722F3E;
+    background: #C8A97E;
   }
 }
 
-/* Vintage Paper & Deckle Edge Effects */
-.paper-texture {
-  background-color: #FAF6F0;
-  background-image: radial-gradient(#DEC7AA 0.75px, transparent 0.75px), radial-gradient(#DEC7AA 0.75px, #FAF6F0 0.75px);
-  background-size: 30px 30px;
-  background-position: 0 0, 15px 15px;
+/* Storybook 3D Container & Perspective */
+.book-perspective {
+  perspective: 2400px;
+  transform-style: preserve-3d;
 }
 
-.vintage-card {
-  background-color: #FAF6F0;
-  border: 1px solid rgba(128, 107, 90, 0.15);
-  box-shadow: 0 10px 30px -10px rgba(41, 37, 34, 0.08), 0 1px 3px rgba(41, 37, 34, 0.05);
+/* Realistic Paper Textures */
+.book-paper {
+  background-color: #FAF5EC;
+  background-image: 
+    radial-gradient(#DEC7AA 0.65px, transparent 0.65px), 
+    radial-gradient(#DEC7AA 0.65px, #FAF5EC 0.65px);
+  background-size: 24px 24px;
+  background-position: 0 0, 12px 12px;
 }
 
-.vintage-stamp {
-  border: 2px dashed #D9A6A0;
-  padding: 8px;
-  background: rgba(247, 240, 230, 0.7);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+/* Subtle book page stack depth (layered page edges effect) */
+.book-page-stack-left {
+  box-shadow: 
+    -1px 0 0 #D9C5AB,
+    -3px 0 0 #FAF5EC,
+    -4px 0 0 #D9C5AB,
+    -6px 0 0 #FAF5EC,
+    -8px 0 0 #D9C5AB,
+    -12px 10px 30px rgba(0, 0, 0, 0.45);
 }
 
-.vintage-ticket-edge {
-  position: relative;
-  background: #FAF6F0;
+.book-page-stack-right {
+  box-shadow: 
+    1px 0 0 #D9C5AB,
+    3px 0 0 #FAF5EC,
+    4px 0 0 #D9C5AB,
+    6px 0 0 #FAF5EC,
+    8px 0 0 #D9C5AB,
+    12px 10px 30px rgba(0, 0, 0, 0.45);
 }
-.vintage-ticket-edge::before,
-.vintage-ticket-edge::after {
-  content: '';
+
+/* Central book crease / gutter shadow for realistic open book */
+.book-gutter-left {
+  background: linear-gradient(to left, rgba(41, 37, 34, 0.18) 0%, rgba(41, 37, 34, 0.06) 6%, transparent 22%);
+}
+
+.book-gutter-right {
+  background: linear-gradient(to right, rgba(41, 37, 34, 0.22) 0%, rgba(41, 37, 34, 0.07) 6%, transparent 22%);
+}
+
+/* Vintage Photo Mounting Corners */
+.photo-mount-corner {
   position: absolute;
-  top: 50%;
-  width: 20px;
-  height: 20px;
-  background-color: #F7F0E6;
-  border-radius: 50%;
-  transform: translateY(-50%);
-}
-.vintage-ticket-edge::before {
-  left: -10px;
-}
-.vintage-ticket-edge::after {
-  right: -10px;
-}
-
-/* Washi tape illusion */
-.washi-tape {
-  position: absolute;
-  height: 28px;
-  width: 110px;
-  background: rgba(217, 166, 160, 0.45);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
-  backdrop-filter: blur(1px);
-  transform: rotate(-3deg);
+  width: 14px;
+  height: 14px;
+  border-color: #C8A97E;
+  pointer-events: none;
   z-index: 10;
 }
-
-/* Floating animation */
-@keyframes gentle-float {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-8px) rotate(1deg);
-  }
+.photo-mount-corner.tl {
+  top: -2px;
+  left: -2px;
+  border-top: 2.5px solid #806B5A;
+  border-left: 2.5px solid #806B5A;
+}
+.photo-mount-corner.tr {
+  top: -2px;
+  right: -2px;
+  border-top: 2.5px solid #806B5A;
+  border-right: 2.5px solid #806B5A;
+}
+.photo-mount-corner.bl {
+  bottom: -2px;
+  left: -2px;
+  border-bottom: 2.5px solid #806B5A;
+  border-left: 2.5px solid #806B5A;
+}
+.photo-mount-corner.br {
+  bottom: -2px;
+  right: -2px;
+  border-bottom: 2.5px solid #806B5A;
+  border-right: 2.5px solid #806B5A;
 }
 
-.animate-gentle-float {
-  animation: gentle-float 6s ease-in-out infinite;
+/* Drop-cap for storybook chapter openings */
+.drop-cap::first-letter {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 3.8rem;
+  line-height: 0.8;
+  float: left;
+  margin-right: 0.65rem;
+  margin-top: 0.2rem;
+  color: #722F3E;
+  font-weight: 700;
+  text-shadow: 1px 1px 0px rgba(200, 169, 126, 0.4);
 }
 
-/* Subtle glow */
-.rose-glow {
-  box-shadow: 0 0 40px rgba(217, 166, 160, 0.35);
+/* Antique Hardcover Texture */
+.cover-leather {
+  background: radial-gradient(circle at 50% 30%, #561F2B 0%, #3B121A 60%, #260A10 100%);
+  box-shadow: 
+    inset 0 0 80px rgba(0, 0, 0, 0.6),
+    0 30px 60px -15px rgba(0, 0, 0, 0.8),
+    0 0 0 2px #C8A97E;
+}
+
+/* Gold foil embossed effect */
+.gold-foil {
+  background: linear-gradient(135deg, #DFCA9B 0%, #F5E6C4 30%, #C8A97E 60%, #9B7744 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,0.4));
+}
+
+/* Lined letter stationery */
+.letter-parchment {
+  background-color: #FCF8F2;
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 31px,
+    rgba(217, 166, 160, 0.22) 31px,
+    rgba(217, 166, 160, 0.22) 32px
+  );
+  line-height: 32px;
 }

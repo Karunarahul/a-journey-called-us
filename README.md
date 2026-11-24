@@ -1,102 +1,90 @@
 # SOMEWHERE, IT'S ALWAYS YOU.
-### A Birthday Story for Tejjaaaa ❤️
+### An Animated Romantic Storybook for Tejjaaaa ❤️
 
-> *"If life is a journey, you're still my favourite destination."*  
-> **"Wishing you many more happy returns of the day, Tejjaaaa ❤️"**
-
----
-
-## 🌹 About This Gift
-
-**SOMEWHERE, IT'S ALWAYS YOU.** is a personal digital experience handcrafted for **Tejjaaaa ❤️** (also lovingly known as **Nannaaaaa ❤️**).
-
-Designed as an intimate, romantic travel journal and scrapbook, it chronicles our journey from our initial college days, through the silly jokes, inside jokes, and madness of our little world, the unexpected routes and arguments where we learned to listen and forgive, and straight into celebrating the wonderful human he is today.
+> *"Our story is still going places. And if there's one journey I never want to end, it's ours."*  
+> **"Wishing you many more happy returns of the day, Nannaaaaa ❤️"**
 
 ---
 
-## 📖 Chapter Breakdown
+## 📖 About This Gift
 
-### **The Invitation**
-*An authentic wax-sealed cream envelope awaiting him on arrival.*
-- **Salutation**: *"To my favourite human,"*
-- **Message**: *"I have a little something for you. It's not a big surprise wrapped in fancy paper, but it's filled with little pieces of us, a few memories, some feelings I don't always say out loud, and a whole lot of love. So, birthday boy, shall we?"*
-- **Action**: *"Let's revisit our story ❤️"*
+**SOMEWHERE, IT'S ALWAYS YOU.** is an interactive, animated romantic storybook crafted with deep love for **Tejjaaaa ❤️** (affectionately known as **Nannaaaaa ❤️**).
 
-### **Chapter 01 — The Beginning**
-- **Subtitle**: *"And just like that, life had a plot twist."*
-- **Memory**: Remembering those initial college days, ordinary moments that blossomed into an extraordinary bond.
-- **Milestones**: Placeholders for *First Meeting Date*, *Our College Days*, *First Conversation*, and *First Unforgettable Moment*.
-- **Closing Note**: *"Little did we know, this was just the first page."*
+Designed to resemble a beautifully illustrated physical storybook, it brings to life a girlfriend's love story to her boyfriend—chronicling their initial college days, the quirky humor and madness of their little world, the difficult turns where they learned to forgive and choose each other, and an intimate celebration of his birthday.
 
-### **Chapter 02 — Our Little World**
-- **Subtitle**: *"Some of my favourite memories have you in them."*
-- **Memory**: Inside jokes, our own language, special moments, and our own share of madness.
-- **Polaroid Album**: Interactive cards with washi tape, location tags, date stamps, and a high-resolution lightbox.
-- **Closing Note**: *"Some moments deserve to be lived twice. Ours deserve a thousand replays."*
+---
 
-### **Chapter 03 — The Unexpected Routes**
-- **Subtitle**: *"Okay, let's be honest. We're not always cute."*
-- **Memory**: The fights, misunderstandings, stubborn moments, overthinking, and learning to talk things through and forgive.
-- **Visuals**: Interactive split-screen transition from dark stormy skies to a radiant golden sunrise.
-- **Closing Note**: *"P.S. You can still be annoying sometimes. But you're my favourite annoying person. ❤️"*
+## 📚 Storybook Structure
 
-### **Chapter 04 — Still My Favourite Person**
-- **Subtitle**: *"After all the chapters, it's still you."*
-- **Memory**: Random talks, silly jokes, comfort of being ourselves, and calling each other mine.
-- **Love Notes Scrapbook**: 6 collectible postcards and folded letters with washi tape, gentle tilts, and interactive reader modals.
+### **The Cover**
+*An antique hardcover with warm ivory paper, rich burgundy typography, brass corner ornamentation, and subtle botanical watercolor laurels.*
+- **Title**: *"SOMEWHERE, IT'S ALWAYS YOU."*
+- **Subtitle**: *"A little story about us."*
+- **Dedication**: *"Made with love, for Tejjaaaa ❤️"*
+- **Action**: *"Open our story"* (animates the cover opening with realistic book perspective).
 
-### **Chapter 05 — It's Your Day!**
-- **Subtitle**: *"Today, my favourite boy gets all the attention."*
-- **Celebration**: Celebrating his dreams, ambitions, smiles, quirks, and wishing him endless happiness, good health, and success.
-- **Wishes**: Dedicated tribute cards for his dreams, health, louder laughs, and serendipity.
+### **Page 01 — The Beginning**
+- **Chapter Title**: *"Every beautiful story begins somewhere."*
+- **Narrative**:
+  > *"Remember those initial college days? We had absolutely no idea how many memories, conversations, smiles and emotions were waiting ahead of us. Somewhere between those ordinary days, our paths crossed, and life quietly started writing a different kind of story. Who knew that you would become such a special part of my life? And honestly, I'm so glad our story began."*
+- **Visuals**: College-inspired environment with authentic campus photographs (`couple-photo-10.webp` with campus buses and `couple-photo-09.webp`), drop cap typography, and handwritten annotations.
 
-### **The Letter — From My Heart To Yours**
-- **Subtitle**: *"A little something I wanted to say."*
-- **The Letter**: The full handwritten birthday epistle addressed to *"My dearest Tejjaaaa ❤️"*, reminiscing on college days, real love, and tomorrows yet to be lived.
-- **Closing**:
+### **Page 02 — Our Little World**
+- **Chapter Title**: *"And then, we became our own little world."*
+- **Narrative**:
+  > *"From random conversations to silly laughs, from unexpected moments to memories that still make us smile... We've created something that belongs only to us. The little jokes, the madness, the photographs, the conversations and all those ordinary days that somehow became extraordinary. If I could keep a few moments forever, I'd choose so many of them with you."*
+- **Visuals**: An illustrated scrapbook spread with varied physical photographs attached directly to the page with mounting corners: beach sand tunnel, motorcycle hill ride, tree-lined stroll, 3-frame laughter collage, and Wonderla park joy.
+
+### **Page 03 — The Unexpected Routes**
+- **Chapter Title**: *"Not every road was easy."*
+- **Narrative**:
+  > *"We've had our fights, misunderstandings, stubborn moments and days when neither of us knew exactly what to say. Sometimes things weren't easy. But we've also learned to talk, understand, forgive and find our way back to each other. We're not a perfect story, and that's okay. Every meaningful journey has unexpected turns. I'm just happy that we're still writing ours."*
+- **Visuals**: An illustrated winding road transitioning from misty storm clouds into golden sunlight. Featuring real photographs in blue raincoats on the misty mountain trek (`couple-photo-19.webp`) and the golden summit embrace (`couple-photo-11.webp`).
+
+### **Page 04 — Still My Favourite Person**
+- **Chapter Title**: *"After all the chapters, it's still you."*
+- **Narrative**:
+  > *"Through all the laughter, chaos, little fights and beautiful memories, you've become such a special part of my life. I hope we never lose the random conversations, silly jokes, unexpected smiles and happiness of simply being together. I don't need every day to be perfect. I just hope we keep learning, laughing and creating beautiful memories. Because even after everything, you're still my favourite part of this journey."*
+- **Visuals**: Centerpiece photograph of the intimate forehead-to-forehead embrace on the stairs (`couple-photo-16.webp`) and peaceful lakeside cuddles (`couple-photo-14.webp`).
+
+### **Page 05 — The Birthday Chapter**
+- **Chapter Title**: *"Today, the story celebrates YOU!"*
+- **Narrative**:
+  > *"Happy Birthday, Tejjaaaa! Today is all about you. I hope this new year brings you happiness, good health, exciting adventures, success and everything your heart dreams about. Keep chasing your dreams. Keep smiling. Keep growing. And never stop being the wonderful person you are. You deserve so many beautiful things."*
+- **Visuals**: Warm sunset watercolor tones, candlelit birthday glow, and real birthday memories with sparkler cake, balloons, and their puppy (`couple-photo-05.webp`) plus midnight car celebration (`couple-photo-03.webp`).
+
+### **The Last Page — A Letter From My Heart**
+*The emotional climax: an intimate handwritten letter inside the book.*
+- Addressed to: *"My dearest Tejjaaaa ❤️"*
+- Full personal birthday epistle reminiscing on college days, real love, dreams, and endless memories ahead.
+- Climax greetings:
   - *"Wishing you many more happy returns of the day, Nannaaaaa ❤️"*
-  - *"I LOVE YOUUUU!"*
+  - *"I LOVE YOUUU!"*
   - *"Forever your girl ❤️"*
-- **Features**: Copy Letter button and Print Keepsake button.
+- Sealed with an embossed wax seal badge and a tipped-in keepsake selfie Polaroid (`couple-photo-01.webp`).
 
 ### **The Final Page**
-- **Subtitle**: *"The journey is nowhere near over."*
-- **Affirmation**:
-  > *"More birthdays. More adventures. More silly arguments. More making up. More photographs. More sunsets. More dreams. More memories.*  
-  > *And hopefully, a million more reasons to smile together.*  
-  >  
-  > **If life is a journey, you're still my favourite destination.**"
-- **Central Greeting**: **"Wishing you many more happy returns of the day, Tejjaaaa ❤️"**
-- **Sign-off**:  
-  *Until our next adventure.*  
-  With endless love,  
-  Your favourite girl.
-- **Actions**: Grand confetti burst (`Shower Birthday Wishes 🎉`) and replay journey button (`Read our story again`).
+- **Heading**: *"Our story is still going places."*
+- **Supporting Text**: *"And if there's one journey I never want to end, it's ours."*
+- **Final Greeting**: *"Wishing you many more happy returns of the day, Nannaaaaa ❤️"*
+- **Closing**: *"Until our next adventure."*
+- **Visual**: Majestic mountain summit photograph overlooking the sea of clouds (`couple-photo-18.webp`).
+- **Action**: *"Read our story again"* (smoothly turns back to Cover).
 
 ---
 
-## 🎨 Personalization & Content Configuration
+## 🎵 Music & Audio
 
-All text, dates, photographs, and audio are managed in:
-👉 [src/data/loveStory.ts](file:///f:/A%20Journey%20Called%20Us/src/data/loveStory.ts)
-
-A built-in **Personalization Guide** is accessible directly through the navigation bar and footer modal on the website.
-
----
-
-## 🚀 Running the Project
-
-```bash
-# Run development server
-npm run dev
-
-# Run production build
-npm run build
-
-# Preview production build
-npm run preview
-```
+The website includes **"The Metro Proposal"** (`public/audio/the-metro-proposal.mp3`).
+- Plays automatically when opening the book cover.
+- Controlled via the subtle audio button in the top navigation bar.
 
 ---
 
-*Dedicated to **Tejjaaaa ❤️** with endless love.*
+## 💻 Tech Stack & Architecture
+
+- **React 19 & TypeScript**: Component-driven storybook architecture.
+- **Framer Motion**: Smooth page transitions, 3D cover unfold, and gentle reveals.
+- **Tailwind CSS v3**: Editorial book layouts, custom paper textures, and responsive spreads.
+- **Typography**: Google Fonts (*Cormorant Garamond*, *DM Sans*, *Playfair Display*, *Caveat*).
+- **Central Data Configuration**: [src/data/storybook.ts](file:///f:/A%20Journey%20Called%20Us/src/data/storybook.ts).
