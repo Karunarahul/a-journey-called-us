@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { loveStory } from '../data/loveStory';
+import { RomanticPhoto } from './RomanticPhoto';
 
 export const Chapter4Today: React.FC = () => {
   const { chapter4 } = loveStory;
@@ -61,46 +62,22 @@ export const Chapter4Today: React.FC = () => {
         >
           {/* Feature Photo: Forehead Touch */}
           {chapter4.photos[0] && (
-            <div className="relative bg-[#FCFAF6] p-3 sm:p-4 rounded-2xl shadow-xl border border-[#E5DFD4] max-w-md mx-auto rotate-[1deg]">
-              <div className="photo-mount-corner tl" />
-              <div className="photo-mount-corner tr" />
-              <div className="photo-mount-corner bl" />
-              <div className="photo-mount-corner br" />
-
-              <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg bg-[#EFEBE2]/40 shadow-inner">
-                <img
-                  src={chapter4.photos[0].url}
-                  alt={chapter4.photos[0].alt}
-                  className="w-full h-full object-cover object-top"
-                  loading="lazy"
-                />
-              </div>
-
-              <div className="pt-3 text-center">
-                <p className="font-handwriting text-xl text-[#783D48] font-bold">
-                  "{chapter4.photos[0].caption}"
-                </p>
-                <span className="font-sans text-[11px] text-[#A18F7E] uppercase tracking-wider block mt-0.5">
-                  {chapter4.photos[0].annotation}
-                </span>
-              </div>
+            <div className="max-w-md mx-auto rotate-[1deg]">
+              <RomanticPhoto
+                photo={chapter4.photos[0]}
+                showTape={true}
+                showCorners={true}
+              />
             </div>
           )}
 
           {/* Secondary Photo: Quiet Lakeside */}
           {chapter4.photos[1] && (
-            <div className="relative bg-[#FCFAF6] p-2.5 rounded-xl shadow-md border border-[#E5DFD4] max-w-sm mx-auto rotate-[-1.5deg]">
-              <div className="aspect-[16/10] w-full overflow-hidden rounded-md bg-[#EFEBE2]/40 shadow-inner">
-                <img
-                  src={chapter4.photos[1].url}
-                  alt={chapter4.photos[1].alt}
-                  className="w-full h-full object-cover object-center"
-                  loading="lazy"
-                />
-              </div>
-              <p className="font-handwriting text-sm text-[#242321] text-center pt-1.5 font-medium">
-                {chapter4.photos[1].caption}
-              </p>
+            <div className="max-w-sm mx-auto rotate-[-1.5deg]">
+              <RomanticPhoto
+                photo={chapter4.photos[1]}
+                showCorners={true}
+              />
             </div>
           )}
         </motion.div>

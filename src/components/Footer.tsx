@@ -35,6 +35,13 @@ export const Footer: React.FC = () => {
           </button>
         </div>
       </div>
+
+      {/* Subtle Divider & Minimal Footer Credit */}
+      <div className="max-w-7xl mx-auto mt-10 pt-8 border-t border-[#3A3835]/70 text-center">
+        <p className="font-sans text-xs sm:text-[13px] tracking-wider text-[#A18F7E] font-normal select-none">
+          designed by Rahul
+        </p>
+      </div>
     </footer>
   );
 };

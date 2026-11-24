@@ -1,10 +1,5 @@
-export interface PhotoItem {
-  url: string;
-  caption: string;
-  annotation?: string;
-  alt: string;
-  category?: string;
-}
+import { photoRegistry, type PhotoConfig } from './photoConfig';
+import { assetUrl } from '../utils/assetPath';
 
 export interface LoveStoryConfig {
   meta: {
@@ -21,21 +16,21 @@ export interface LoveStoryConfig {
     supportingText: string;
     recipientText: string;
     ctaText: string;
-    photo: PhotoItem;
+    photo: PhotoConfig;
   };
   chapter1: {
     badge: string;
     headline: string;
     narrative: string[];
     quote: string;
-    photos: PhotoItem[];
+    photos: PhotoConfig[];
   };
   chapter2: {
     badge: string;
     headline: string;
     narrative: string[];
     quote: string;
-    photos: PhotoItem[];
+    photos: PhotoConfig[];
   };
   chapter3: {
     badge: string;
@@ -43,21 +38,21 @@ export interface LoveStoryConfig {
     narrative: string[];
     quote: string;
     postscript: string;
-    photos: PhotoItem[];
+    photos: PhotoConfig[];
   };
   chapter4: {
     badge: string;
     headline: string;
     narrative: string[];
     quote: string;
-    photos: PhotoItem[];
+    photos: PhotoConfig[];
   };
   chapter5: {
     badge: string;
     headline: string;
     narrative: string[];
     quote: string;
-    photos: PhotoItem[];
+    photos: PhotoConfig[];
   };
   birthdayLetter: {
     heading: string;
@@ -67,7 +62,7 @@ export interface LoveStoryConfig {
     loveDeclaration: string;
     signature: string;
     waxSealStamp: string;
-    photo: PhotoItem;
+    photo: PhotoConfig;
   };
   finalDestination: {
     headline: string;
@@ -75,7 +70,7 @@ export interface LoveStoryConfig {
     finalGreeting: string; // Wishing you many more happy returns of the day, Nannaaaaa ❤️
     closingAnnotation: string;
     replayText: string;
-    photo: PhotoItem;
+    photo: PhotoConfig;
   };
   audio: {
     url: string;
@@ -99,12 +94,7 @@ export const loveStory: LoveStoryConfig = {
     supportingText: "There's a little story I want you to revisit today.",
     recipientText: "Kannayaaa ❤️",
     ctaText: "Begin our story",
-    photo: {
-      url: "/photos/couple-photo-14.webp",
-      caption: "Our quiet place, together.",
-      annotation: "Where time always slows down",
-      alt: "Quiet lakeside embrace together",
-    },
+    photo: photoRegistry.opening,
   },
   chapter1: {
     badge: "01 / THE BEGINNING",
@@ -118,18 +108,8 @@ export const loveStory: LoveStoryConfig = {
     ],
     quote: "Who knew that ordinary college days would become the beginning of everything?",
     photos: [
-      {
-        url: "/photos/couple-photo-10.webp",
-        caption: "College grounds, yellow buses, and the start of us.",
-        annotation: "Where our paths first crossed",
-        alt: "College days together",
-      },
-      {
-        url: "/photos/couple-photo-09.webp",
-        caption: "Festive smiles and ordinary days turning special.",
-        annotation: "Early memories we cherish",
-        alt: "College celebrations together",
-      }
+      photoRegistry.collegeGrounds,
+      photoRegistry.collegeFestive,
     ],
   },
   chapter2: {
@@ -143,36 +123,11 @@ export const loveStory: LoveStoryConfig = {
     ],
     quote: "Some moments deserve to be lived twice. Ours deserve a thousand replays.",
     photos: [
-      {
-        url: "/photos/couple-photo-02.webp",
-        caption: "Looking at life through our own little lens.",
-        annotation: "Beach sand tunnel magic",
-        alt: "Beach sand perspective with you",
-      },
-      {
-        url: "/photos/couple-photo-04.webp",
-        caption: "Mud on the tires, wind in our hair, you by my side.",
-        annotation: "Bike road trip into the hills",
-        alt: "Motorcycle trek through the rain",
-      },
-      {
-        url: "/photos/couple-photo-07.webp",
-        caption: "Three different times, the exact same contagious laugh.",
-        annotation: "Ours deserve a thousand replays",
-        alt: "Laughter collage",
-      },
-      {
-        url: "/photos/couple-photo-06.webp",
-        caption: "Walking through life arm in arm, laughing under the trees.",
-        annotation: "Quiet afternoon stroll",
-        alt: "Walking together",
-      },
-      {
-        url: "/photos/couple-photo-08.webp",
-        caption: "Our own share of madness—never a dull second with you.",
-        annotation: "Pure goofy joy",
-        alt: "Theme park smiles",
-      }
+      photoRegistry.beachSandTunnel,
+      photoRegistry.bikeRoadTrip,
+      photoRegistry.laughterCollage,
+      photoRegistry.walkingTrees,
+      photoRegistry.themeParkJoy,
     ],
   },
   chapter3: {
@@ -189,18 +144,8 @@ export const loveStory: LoveStoryConfig = {
     quote: "Because even the most beautiful journeys have a few unexpected turns. And I'm glad we're still travelling together.",
     postscript: "P.S. You can still be annoying sometimes. But you're my favourite annoying person. ❤️",
     photos: [
-      {
-        url: "/photos/couple-photo-19.webp",
-        caption: "Raincoats, swirling mist, and smiling through the storm.",
-        annotation: "Even when things get messy, we smile",
-        alt: "Raincoats in misty mountains",
-      },
-      {
-        url: "/photos/couple-photo-11.webp",
-        caption: "Finding our smiles again at the summit.",
-        annotation: "Always finding our way back to each other",
-        alt: "Summit embrace in the breeze",
-      }
+      photoRegistry.raincoatsMist,
+      photoRegistry.summitEmbrace,
     ],
   },
   chapter4: {
@@ -215,18 +160,8 @@ export const loveStory: LoveStoryConfig = {
     ],
     quote: "And if I had to choose a favourite part of this entire journey? It's getting to call you mine.",
     photos: [
-      {
-        url: "/photos/couple-photo-16.webp",
-        caption: "Forehead touches that quiet the entire noisy world.",
-        annotation: "My favourite kind of home",
-        alt: "Intimate forehead to forehead cuddle",
-      },
-      {
-        url: "/photos/couple-photo-14.webp",
-        caption: "Quiet lake shores, cloudy skies, and peaceful cuddles.",
-        annotation: "Comfort in the quiet moments",
-        alt: "Lakeside embrace",
-      }
+      photoRegistry.foreheadTouch,
+      photoRegistry.quietLakeside,
     ],
   },
   chapter5: {
@@ -244,24 +179,9 @@ export const loveStory: LoveStoryConfig = {
     ],
     quote: "You have so many beautiful things waiting ahead of you. Go get them, birthday boy!",
     photos: [
-      {
-        url: "/photos/couple-photo-05.webp",
-        caption: "Sparkler candles, balloons, our puppy & the sweetest smile.",
-        annotation: "Today my favourite boy gets all the attention!",
-        alt: "Birthday celebration with sparkler cake",
-      },
-      {
-        url: "/photos/couple-photo-03.webp",
-        caption: "Midnight celebration on the car bonnet.",
-        annotation: "Surprises made just for you",
-        alt: "Midnight birthday with puppy on car",
-      },
-      {
-        url: "/photos/couple-photo-12.webp",
-        caption: "Giant blue teddy bear and fairy lights.",
-        annotation: "May every year bring you magic",
-        alt: "Birthday room with teddy bear",
-      }
+      photoRegistry.sparklerCake,
+      photoRegistry.carBonnetSurprise,
+      photoRegistry.teddyBearRoom,
     ],
   },
   birthdayLetter: {
@@ -287,12 +207,7 @@ export const loveStory: LoveStoryConfig = {
     loveDeclaration: "I LOVE YOUUU!",
     signature: "Forever your girl ❤️",
     waxSealStamp: "SEALED WITH ENDLESS LOVE",
-    photo: {
-      url: "/photos/couple-photo-01.webp",
-      caption: "Forever in my heart.",
-      annotation: "Tucked inside this letter",
-      alt: "Smiling selfie together",
-    },
+    photo: photoRegistry.letterPolaroid,
   },
   finalDestination: {
     headline: "Our story is still going places.",
@@ -300,16 +215,11 @@ export const loveStory: LoveStoryConfig = {
     finalGreeting: "Wishing you many more happy returns of the day, Nannaaaaa ❤️",
     closingAnnotation: "Until our next adventure.",
     replayText: "Read our story again",
-    photo: {
-      url: "/photos/couple-photo-18.webp",
-      caption: "Looking out into the endless horizon—together.",
-      annotation: "Our favourite destination is us",
-      alt: "Standing together on mountain ridge looking out over clouds",
-    },
+    photo: photoRegistry.finalMountainRidge,
   },
   audio: {
-    url: "/audio/the-metro-proposal.mp3",
-    title: "The Metro Proposal",
+    url: assetUrl("/music/our-song.mp3"),
+    title: "Our Song",
     artist: "Romantic Melody",
   },
 };

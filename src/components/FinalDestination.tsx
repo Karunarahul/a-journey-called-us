@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { RotateCcw, Sparkles } from 'lucide-react';
 import { loveStory } from '../data/loveStory';
+import { RomanticPhoto } from './RomanticPhoto';
 
 interface FinalDestinationProps {
   onReplayStory: () => void;
@@ -62,30 +63,13 @@ export const FinalDestination: React.FC<FinalDestinationProps> = ({ onReplayStor
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.4 }}
-            className="relative max-w-2xl mx-auto p-3 sm:p-5 bg-[#FCFAF6] rounded-3xl shadow-2xl border-2 border-[#C8A97E]/60 rotate-[-0.5deg]"
+            className="max-w-2xl mx-auto rotate-[-0.5deg]"
           >
-            <div className="photo-mount-corner tl" />
-            <div className="photo-mount-corner tr" />
-            <div className="photo-mount-corner bl" />
-            <div className="photo-mount-corner br" />
-
-            <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl bg-[#EFEBE2]/40 shadow-inner">
-              <img
-                src={finalDestination.photo.url}
-                alt={finalDestination.photo.alt}
-                className="w-full h-full object-cover object-top"
-                loading="lazy"
-              />
-            </div>
-
-            <div className="pt-4 pb-1 text-center">
-              <p className="font-handwriting text-2xl text-[#783D48] font-bold">
-                "{finalDestination.photo.caption}"
-              </p>
-              <span className="font-sans text-[11px] text-[#A18F7E] uppercase tracking-wider block mt-0.5">
-                {finalDestination.photo.annotation}
-              </span>
-            </div>
+            <RomanticPhoto
+              photo={finalDestination.photo}
+              showTape={true}
+              showCorners={true}
+            />
           </motion.div>
         )}
 

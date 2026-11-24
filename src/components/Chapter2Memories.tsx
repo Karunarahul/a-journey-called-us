@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { loveStory } from '../data/loveStory';
+import { RomanticPhoto } from './RomanticPhoto';
 
 export const Chapter2Memories: React.FC = () => {
   const { chapter2 } = loveStory;
@@ -70,24 +71,13 @@ export const Chapter2Memories: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="md:col-span-7 bg-[#FCFAF6] p-3 sm:p-4 rounded-2xl shadow-lg border border-[#E5DFD4] rotate-[-0.8deg]"
+            className="md:col-span-7 rotate-[-0.8deg]"
           >
-            <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-[#EFEBE2]/40 shadow-inner">
-              <img
-                src={chapter2.photos[0].url}
-                alt={chapter2.photos[0].alt}
-                className="w-full h-full object-cover object-center"
-                loading="lazy"
-              />
-            </div>
-            <div className="pt-3 px-2 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-              <p className="font-handwriting text-xl text-[#783D48] font-bold">
-                "{chapter2.photos[0].caption}"
-              </p>
-              <span className="font-sans text-[11px] text-[#A18F7E] uppercase tracking-wider">
-                {chapter2.photos[0].annotation}
-              </span>
-            </div>
+            <RomanticPhoto
+              photo={chapter2.photos[0]}
+              showTape={true}
+              showCorners={true}
+            />
           </motion.div>
         )}
 
@@ -98,24 +88,12 @@ export const Chapter2Memories: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="md:col-span-5 bg-[#FCFAF6] p-3 sm:p-4 rounded-2xl shadow-lg border border-[#E5DFD4] rotate-[1.2deg]"
+            className="md:col-span-5 rotate-[1.2deg]"
           >
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-[#EFEBE2]/40 shadow-inner">
-              <img
-                src={chapter2.photos[1].url}
-                alt={chapter2.photos[1].alt}
-                className="w-full h-full object-cover object-top"
-                loading="lazy"
-              />
-            </div>
-            <div className="pt-3 px-2">
-              <p className="font-handwriting text-lg text-[#783D48] font-bold">
-                "{chapter2.photos[1].caption}"
-              </p>
-              <span className="font-sans text-[11px] text-[#A18F7E] uppercase tracking-wider block mt-0.5">
-                {chapter2.photos[1].annotation}
-              </span>
-            </div>
+            <RomanticPhoto
+              photo={chapter2.photos[1]}
+              showCorners={true}
+            />
           </motion.div>
         )}
 
@@ -126,19 +104,12 @@ export const Chapter2Memories: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="md:col-span-4 bg-[#FCFAF6] p-3 rounded-2xl shadow-md border border-[#E5DFD4] rotate-[1deg]"
+            className="md:col-span-4 rotate-[1deg]"
           >
-            <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg bg-[#EFEBE2]/40 shadow-inner">
-              <img
-                src={chapter2.photos[2].url}
-                alt={chapter2.photos[2].alt}
-                className="w-full h-full object-cover object-top"
-                loading="lazy"
-              />
-            </div>
-            <p className="font-handwriting text-base text-[#242321] text-center pt-2 font-medium">
-              {chapter2.photos[2].caption}
-            </p>
+            <RomanticPhoto
+              photo={chapter2.photos[2]}
+              showCorners={true}
+            />
           </motion.div>
         )}
 
@@ -149,19 +120,12 @@ export const Chapter2Memories: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.15 }}
-            className="md:col-span-4 bg-[#FCFAF6] p-3 rounded-2xl shadow-md border border-[#E5DFD4] rotate-[-1.5deg]"
+            className="md:col-span-4 rotate-[-1.5deg]"
           >
-            <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg bg-[#EFEBE2]/40 shadow-inner">
-              <img
-                src={chapter2.photos[3].url}
-                alt={chapter2.photos[3].alt}
-                className="w-full h-full object-cover object-top"
-                loading="lazy"
-              />
-            </div>
-            <p className="font-handwriting text-base text-[#242321] text-center pt-2 font-medium">
-              {chapter2.photos[3].caption}
-            </p>
+            <RomanticPhoto
+              photo={chapter2.photos[3]}
+              showCorners={true}
+            />
           </motion.div>
         )}
 
@@ -172,19 +136,12 @@ export const Chapter2Memories: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="md:col-span-4 bg-[#FCFAF6] p-3 rounded-2xl shadow-md border border-[#E5DFD4] rotate-[2deg]"
+            className="md:col-span-4 rotate-[2deg]"
           >
-            <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg bg-[#EFEBE2]/40 shadow-inner">
-              <img
-                src={chapter2.photos[4].url}
-                alt={chapter2.photos[4].alt}
-                className="w-full h-full object-cover object-top"
-                loading="lazy"
-              />
-            </div>
-            <p className="font-handwriting text-base text-[#242321] text-center pt-2 font-medium">
-              {chapter2.photos[4].caption}
-            </p>
+            <RomanticPhoto
+              photo={chapter2.photos[4]}
+              showCorners={true}
+            />
           </motion.div>
         )}
       </div>

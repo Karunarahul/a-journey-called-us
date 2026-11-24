@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Sparkles } from 'lucide-react';
 import { loveStory } from '../data/loveStory';
+import { RomanticPhoto } from './RomanticPhoto';
 
 export const Chapter5Birthday: React.FC = () => {
   const { chapter5 } = loveStory;
@@ -77,24 +78,13 @@ export const Chapter5Birthday: React.FC = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.9 }}
-            className="md:col-span-6 bg-[#FCFAF6] p-3 sm:p-5 rounded-2xl shadow-xl border-2 border-[#C8A97E]/60 rotate-[-1deg]"
+            className="md:col-span-6 rotate-[-1deg]"
           >
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-[#EFEBE2]/40 shadow-inner">
-              <img
-                src={chapter5.photos[0].url}
-                alt={chapter5.photos[0].alt}
-                className="w-full h-full object-cover object-top"
-                loading="lazy"
-              />
-            </div>
-            <div className="pt-3 text-center">
-              <p className="font-handwriting text-xl text-[#783D48] font-bold">
-                "{chapter5.photos[0].caption}"
-              </p>
-              <span className="font-sans text-[11px] text-[#A18F7E] uppercase tracking-wider block mt-0.5 font-medium">
-                {chapter5.photos[0].annotation}
-              </span>
-            </div>
+            <RomanticPhoto
+              photo={chapter5.photos[0]}
+              showTape={true}
+              showCorners={true}
+            />
           </motion.div>
         )}
 
@@ -106,21 +96,12 @@ export const Chapter5Birthday: React.FC = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.15 }}
-              className="bg-[#FCFAF6] p-3 sm:p-4 rounded-xl shadow-md border border-[#E5DFD4] rotate-[1.5deg]"
+              className="rotate-[1.5deg]"
             >
-              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-lg bg-[#EFEBE2]/40 shadow-inner">
-                <img
-                  src={chapter5.photos[1].url}
-                  alt={chapter5.photos[1].alt}
-                  className="w-full h-full object-cover object-top"
-                  loading="lazy"
-                />
-              </div>
-              <div className="pt-2 text-center">
-                <p className="font-handwriting text-base text-[#242321] font-semibold">
-                  "{chapter5.photos[1].caption}"
-                </p>
-              </div>
+              <RomanticPhoto
+                photo={chapter5.photos[1]}
+                showCorners={true}
+              />
             </motion.div>
           )}
 
@@ -130,21 +111,12 @@ export const Chapter5Birthday: React.FC = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="bg-[#FCFAF6] p-3 sm:p-4 rounded-xl shadow-md border border-[#E5DFD4] rotate-[-1deg]"
+              className="rotate-[-1deg]"
             >
-              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-lg bg-[#EFEBE2]/40 shadow-inner">
-                <img
-                  src={chapter5.photos[2].url}
-                  alt={chapter5.photos[2].alt}
-                  className="w-full h-full object-cover object-top"
-                  loading="lazy"
-                />
-              </div>
-              <div className="pt-2 text-center">
-                <p className="font-handwriting text-base text-[#242321] font-semibold">
-                  "{chapter5.photos[2].caption}"
-                </p>
-              </div>
+              <RomanticPhoto
+                photo={chapter5.photos[2]}
+                showCorners={true}
+              />
             </motion.div>
           )}
         </div>

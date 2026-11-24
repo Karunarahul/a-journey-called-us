@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDown, Heart } from 'lucide-react';
 import { loveStory } from '../data/loveStory';
+import { RomanticPhoto } from './RomanticPhoto';
 
 interface OpeningInvitationProps {
   onBeginStory: () => void;
@@ -72,32 +73,13 @@ export const OpeningInvitation: React.FC<OpeningInvitationProps> = ({ onBeginSto
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.6 }}
-          className="relative max-w-lg mx-auto mb-10 p-3 sm:p-4 bg-[#FCFAF6] rounded-2xl shadow-xl border border-[#E5DFD4]"
+          className="relative max-w-lg mx-auto mb-10 text-center"
         >
-          <div className="photo-mount-corner tl" />
-          <div className="photo-mount-corner tr" />
-          <div className="photo-mount-corner bl" />
-          <div className="photo-mount-corner br" />
-
-          <div className="relative aspect-[16/10] sm:aspect-[4/3] w-full overflow-hidden rounded-lg bg-[#EFEBE2]/50 shadow-inner">
-            <img
-              src={opening.photo.url}
-              alt={opening.photo.alt}
-              className="w-full h-full object-cover object-center"
-              loading="eager"
-            />
-          </div>
-
-          <div className="pt-3 pb-1 text-center">
-            <p className="font-handwriting text-xl text-[#783D48] font-semibold">
-              "{opening.photo.caption}"
-            </p>
-            {opening.photo.annotation && (
-              <span className="font-sans text-[11px] text-[#A18F7E] uppercase tracking-wider block mt-0.5">
-                {opening.photo.annotation}
-              </span>
-            )}
-          </div>
+          <RomanticPhoto
+            photo={opening.photo}
+            showTape={true}
+            showCorners={true}
+          />
         </motion.div>
 
         {/* Begin CTA Button */}

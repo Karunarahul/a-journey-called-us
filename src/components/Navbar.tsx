@@ -1,12 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { Volume2, VolumeX, Menu, X, Heart } from 'lucide-react';
+import { Volume2, VolumeX, Menu, X, Heart, Mail } from 'lucide-react';
 import { romanticAudio } from '../utils/audioPlayer';
 import { loveStory } from '../data/loveStory';
 
-export const Navbar: React.FC = () => {
+interface NavbarProps {
+  onOpenEnvelope?: () => void;
+}
+
+export const Navbar: React.FC<NavbarProps> = ({ onOpenEnvelope }) => {
   const [isPlaying, setIsPlaying] = useState<boolean>(romanticAudio.getIsPlaying());
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const [scrolled, setScrolled] = useState<boolean>(false);
+
+  useEffect(() => {
+    // Keep audio playback state synchronized across all interactions
+    const unsubscribe = romanticAudio.subscribe((state) => {
+      setIsPlaying(state.isPlaying);
+    });
+    return unsubscribe;
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,8 +29,7 @@ export const Navbar: React.FC = () => {
   }, []);
 
   const handleToggleAudio = async () => {
-    const active = await romanticAudio.toggle();
-    setIsPlaying(active);
+    await romanticAudio.toggle();
   };
 
   const navLinks = [
@@ -67,7 +78,19 @@ export const Navbar: React.FC = () => {
         </nav>
 
         {/* Audio Toggle & Mobile Menu Trigger */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2.5">
+          {/* Re-read Opening Envelope Button */}
+          {onOpenEnvelope && (
+            <button
+              onClick={onOpenEnvelope}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[#D7B8B1] bg-[#FCFAF6] hover:bg-[#FAF5EE] text-[#783D48] text-xs font-sans transition-all cursor-pointer shadow-sm hover:scale-105 active:scale-95"
+              title="Open the handwritten birthday letter"
+            >
+              <Mail className="w-3.5 h-3.5 text-[#783D48]" />
+              <span className="hidden sm:inline font-medium">Letter</span>
+            </button>
+          )}
+
           {/* Audio Player Pill */}
           <button
             onClick={handleToggleAudio}
@@ -81,7 +104,7 @@ export const Navbar: React.FC = () => {
             {isPlaying ? (
               <>
                 <Volume2 className="w-3.5 h-3.5 text-[#D7B8B1]" />
-                <span className="hidden sm:inline font-medium">The Metro Proposal</span>
+                <span className="hidden sm:inline font-medium">Our Song</span>
                 <span className="flex gap-0.5 items-end h-3 ml-1">
                   <span className="w-0.5 h-3 bg-[#FCFAF6] animate-pulse" />
                   <span className="w-0.5 h-2 bg-[#FCFAF6] animate-pulse delay-75" />
@@ -91,7 +114,7 @@ export const Navbar: React.FC = () => {
             ) : (
               <>
                 <VolumeX className="w-3.5 h-3.5 text-[#A18F7E]" />
-                <span className="hidden sm:inline font-medium">Play Melody</span>
+                <span className="hidden sm:inline font-medium">Play Our Song</span>
               </>
             )}
           </button>
@@ -120,6 +143,18 @@ export const Navbar: React.FC = () => {
               {link.label}
             </a>
           ))}
+          {onOpenEnvelope && (
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onOpenEnvelope();
+              }}
+              className="w-full flex items-center justify-center gap-2 py-2 px-3 text-sm font-sans font-medium text-[#783D48] bg-[#EFEBE2]/70 hover:bg-[#EFEBE2] rounded-md transition-colors"
+            >
+              <Mail className="w-4 h-4 text-[#783D48]" />
+              <span>Read Opening Letter Envelope</span>
+            </button>
+          )}
           <div className="pt-2 text-center border-t border-[#E5DFD4]/60">
             <span className="font-handwriting text-base text-[#783D48] flex items-center justify-center gap-1">
               For my favourite boy, {loveStory.names.primaryName} <Heart className="w-3 h-3 fill-[#783D48]" />

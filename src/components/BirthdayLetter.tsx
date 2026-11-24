@@ -2,9 +2,11 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Heart } from 'lucide-react';
 import { loveStory } from '../data/loveStory';
+import { useGallery } from '../context/GalleryContext';
 
 export const BirthdayLetter: React.FC = () => {
   const { birthdayLetter } = loveStory;
+  const { openLightbox } = useGallery();
 
   return (
     <section
@@ -82,18 +84,26 @@ export const BirthdayLetter: React.FC = () => {
           <div className="mt-8 pt-4 flex flex-col sm:flex-row items-center justify-between gap-6">
             {/* Keepsake Polaroid */}
             {birthdayLetter.photo && (
-              <div className="relative bg-[#FFFDF9] p-3 rounded-xl shadow-md border border-[#E5DFD4] w-36 sm:w-44 rotate-[-2.5deg] shrink-0">
+              <div
+                onClick={() => openLightbox(birthdayLetter.photo)}
+                role="button"
+                tabIndex={0}
+                className="group relative bg-[#FFFDF9] p-3 rounded-xl shadow-md hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 border border-[#E5DFD4] w-36 sm:w-44 rotate-[-2.5deg] shrink-0 cursor-pointer"
+                title="Click to view our keepsake photo in full screen"
+              >
                 <div className="washi-tape -top-2 left-1/2 -translate-x-1/2 w-12 bg-[#C8A97E]/30" />
-                <div className="aspect-[3/4] w-full overflow-hidden rounded bg-[#EFEBE2]/40 shadow-inner">
+                <div className={`${birthdayLetter.photo.aspectRatio} w-full overflow-hidden rounded bg-[#EFEBE2]/40 shadow-inner`}>
                   <img
                     src={birthdayLetter.photo.url}
                     alt={birthdayLetter.photo.alt}
-                    className="w-full h-full object-cover object-top"
+                    style={{ objectPosition: birthdayLetter.photo.objectPosition }}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                   />
                 </div>
-                <p className="font-handwriting text-xs sm:text-sm text-[#783D48] text-center pt-2 font-bold">
-                  {birthdayLetter.photo.caption}
+                <p className="font-handwriting text-xs sm:text-sm text-[#783D48] text-center pt-2 font-bold flex items-center justify-center gap-1">
+                  <span>{birthdayLetter.photo.caption}</span>
+                  <Heart className="w-3 h-3 fill-[#783D48] text-[#783D48]" />
                 </p>
               </div>
             )}
