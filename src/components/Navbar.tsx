@@ -36,13 +36,13 @@ export const Navbar: React.FC<NavbarProps> = ({
   };
 
   const navLinks = [
-    { name: 'Our Story', href: '#story' },
-    { name: 'Timeline', href: '#timeline' },
-    { name: 'Love Notes', href: '#notes' },
-    { name: 'Resilience', href: '#storms' },
-    { name: 'Photo Album', href: '#album' },
-    { name: 'Reasons Why', href: '#reasons' },
-    { name: 'Birthday Letter', href: '#letter' },
+    { name: 'Ch 1: The Beginning', href: '#chapter1' },
+    { name: 'Ch 2: Our Little World', href: '#chapter2' },
+    { name: 'Ch 3: Unexpected Routes', href: '#chapter3' },
+    { name: 'Ch 4: Still My Favourite', href: '#chapter4' },
+    { name: 'Ch 5: It\'s Your Day!', href: '#chapter5' },
+    { name: 'The Letter', href: '#letter' },
+    { name: 'The Final Page', href: '#destination' },
   ];
 
   return (
@@ -63,13 +63,13 @@ export const Navbar: React.FC<NavbarProps> = ({
             <div className="w-8 h-8 rounded-full bg-burgundy flex items-center justify-center text-ivory shadow-wax border border-white/20">
               <Heart className="w-4 h-4 fill-ivory text-ivory group-hover:scale-110 transition-transform" />
             </div>
-            <span className="font-cormorant text-xl tracking-wider font-semibold text-burgundy group-hover:text-burgundy-800 transition-colors">
-              A Journey Called Us
+            <span className="font-cormorant text-lg sm:text-xl tracking-wider font-semibold text-burgundy group-hover:text-burgundy-800 transition-colors">
+              Somewhere, It's Always You
             </span>
           </a>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center space-x-6 text-sm font-medium text-mutedbrown">
+          <nav className="hidden md:flex items-center space-x-5 text-xs lg:text-sm font-medium text-mutedbrown">
             {navLinks.map((link) => (
               <a
                 key={link.name}
@@ -156,7 +156,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               ))}
             </div>
             <div className="pt-3 border-t border-cream flex items-center justify-between text-xs text-mutedbrown">
-              <span>Dedicated to {loveStory.recipient.nickname}</span>
+              <span>Dedicated to {loveStory.names.primaryName}</span>
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);

@@ -82,7 +82,7 @@ export const OpeningEnvelope: React.FC<OpeningEnvelopeProps> = ({
           >
             <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-serif tracking-widest text-vintagegold border border-vintagegold/30 bg-charcoal/60 backdrop-blur-sm">
               <Sparkles className="w-3 h-3 text-vintagegold" />
-              SPECIAL DELIVERY FOR NANNAAAAA ❤️
+              SPECIAL DELIVERY FOR TEJJAAAA ❤️
             </span>
           </motion.div>
 
@@ -103,28 +103,28 @@ export const OpeningEnvelope: React.FC<OpeningEnvelopeProps> = ({
             >
               {/* Letter Header */}
               <div className="border-b border-cream/80 pb-3 flex items-center justify-between">
-                <span className="font-serif italic text-burgundy text-sm sm:text-base">
-                  Dearest {loveStory.recipient.nickname}
+                <span className="font-serif italic text-burgundy text-sm sm:text-base font-semibold">
+                  {loveStory.invitation.salutation}
                 </span>
                 <span className="text-[10px] tracking-widest uppercase text-mutedbrown">
-                  Special Delivery
+                  The Invitation
                 </span>
               </div>
 
               {/* Letter Preview Content */}
-              <div className="my-auto py-2">
-                <p className="font-handwriting text-lg sm:text-xl text-charcoal leading-relaxed text-center">
-                  "{loveStory.envelope.openingLetterSnippet}"
+              <div className="my-auto py-2 space-y-2">
+                <p className="font-serif text-sm sm:text-base text-charcoal leading-relaxed text-center italic">
+                  "{loveStory.invitation.messageParagraphs[1]}"
                 </p>
-                <p className="font-serif italic text-center text-xs text-dustyrose-dark mt-2 font-medium">
-                  {loveStory.recipient.birthdayGreeting}
+                <p className="font-handwriting text-xl sm:text-2xl text-burgundy font-bold text-center">
+                  {loveStory.invitation.messageParagraphs[2]}
                 </p>
               </div>
 
               {/* Letter Footer */}
               <div className="pt-2 border-t border-cream/80 flex items-center justify-between text-xs text-mutedbrown">
                 <span className="font-handwriting text-base text-burgundy">
-                  Forever Yours ❤️
+                  {loveStory.names.senderTitle}
                 </span>
                 <span className="text-[10px] uppercase font-sans tracking-wider text-dustyrose-dark">
                   Turn Page ➔
@@ -167,10 +167,10 @@ export const OpeningEnvelope: React.FC<OpeningEnvelopeProps> = ({
               {/* Address on the envelope front */}
               <div className="absolute inset-x-0 bottom-6 text-center z-20">
                 <p className="font-cormorant italic text-base sm:text-lg text-burgundy font-semibold tracking-wide">
-                  {loveStory.envelope.recipientTag}
+                  {loveStory.invitation.salutation}
                 </p>
                 <p className="font-sans text-xs text-mutedbrown tracking-wider uppercase mt-0.5">
-                  {loveStory.envelope.subtitle}
+                  {loveStory.hero.subTitle}
                 </p>
               </div>
             </div>
@@ -217,7 +217,7 @@ export const OpeningEnvelope: React.FC<OpeningEnvelopeProps> = ({
               >
                 <Heart className="w-4 h-4 fill-ivory group-hover:scale-125 transition-transform" />
                 <span className="font-serif tracking-wider text-base">
-                  {loveStory.envelope.openButtonText}
+                  {loveStory.invitation.openButtonText}
                 </span>
                 <Sparkles className="w-4 h-4 text-vintagegold" />
               </motion.button>
@@ -229,7 +229,7 @@ export const OpeningEnvelope: React.FC<OpeningEnvelopeProps> = ({
                 onClick={handleProceedToSite}
                 className="px-8 py-3.5 rounded-full bg-vintagegold hover:bg-vintagegold-dark text-charcoal font-serif font-semibold tracking-wider shadow-lg flex items-center gap-2.5 transition-all group"
               >
-                <span>Step Inside Our Journey</span>
+                <span>{loveStory.invitation.callToAction}</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </motion.button>
             )}

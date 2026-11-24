@@ -68,7 +68,7 @@ export const PersonalizationModal: React.FC<PersonalizationModalProps> = ({
                 <span>2. College Days Placeholders</span>
               </div>
               <p className="font-sans text-xs text-mutedbrown leading-relaxed mb-2">
-                Under <code className="bg-cream/60 px-1 py-0.5 rounded text-charcoal font-mono">ourStory.placeholders</code>, replace the placeholder text with your real memories:
+                Under <code className="bg-cream/60 px-1 py-0.5 rounded text-charcoal font-mono">chapter1.placeholders</code>, replace the placeholder text with your real memories:
               </p>
               <ul className="text-xs text-mutedbrown space-y-1 list-disc list-inside">
                 <li><strong>First Meeting Date:</strong> e.g., "14th September 2021"</li>
@@ -85,7 +85,7 @@ export const PersonalizationModal: React.FC<PersonalizationModalProps> = ({
                 <span>3. Replace With Your Real Photos</span>
               </div>
               <p className="font-sans text-xs text-mutedbrown leading-relaxed mb-2">
-                In <code className="bg-cream/60 px-1 py-0.5 rounded text-charcoal font-mono">loveStory.memoryAlbum.photos</code>, you can:
+                In <code className="bg-cream/60 px-1 py-0.5 rounded text-charcoal font-mono">loveStory.chapter2.photos</code>, you can:
               </p>
               <ul className="text-xs text-mutedbrown space-y-1 list-disc list-inside">
                 <li>Put your own photos in the <code className="bg-cream/60 px-1 py-0.5 rounded text-charcoal font-mono">public/photos/</code> folder.</li>
@@ -109,7 +109,7 @@ export const PersonalizationModal: React.FC<PersonalizationModalProps> = ({
           {/* Modal Footer */}
           <div className="mt-6 pt-4 border-t border-cream flex items-center justify-between">
             <span className="font-serif italic text-xs text-mutedbrown">
-              Handcrafted with endless love for Nannaaaaa ❤️
+              Handcrafted with endless love for Tejjaaaa ❤️
             </span>
             <button
               onClick={onClose}

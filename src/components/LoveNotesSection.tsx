@@ -1,18 +1,25 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Heart, Sparkles, Pin, X, Send } from 'lucide-react';
-import { loveStory, type LoveNote } from '../data/loveStory';
+import { loveStory } from '../data/loveStory';
+
+interface NoteItem {
+  id: string;
+  text: string;
+  handwrittenNote: string;
+  tag: string;
+}
 
 export const LoveNotesSection: React.FC = () => {
-  const { loveNotes } = loveStory;
-  const [selectedNote, setSelectedNote] = useState<LoveNote | null>(null);
+  const { chapter4, names } = loveStory;
+  const [selectedNote, setSelectedNote] = useState<NoteItem | null>(null);
 
   return (
-    <section id="notes" className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <section id="chapter4" className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-ivory">
       {/* Background Ambience */}
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-12">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -20,31 +27,90 @@ export const LoveNotesSection: React.FC = () => {
             className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-serif uppercase tracking-widest text-burgundy bg-burgundy/10 border border-burgundy/20 mb-3"
           >
             <Pin className="w-3.5 h-3.5" />
-            <span>Tucked In My Pocket</span>
+            <span>{chapter4.badge} • STILL MY FAVOURITE PERSON</span>
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="font-cormorant font-bold text-3xl sm:text-5xl text-charcoal tracking-tight leading-tight"
+            className="font-cormorant font-bold text-4xl sm:text-6xl text-charcoal tracking-tight leading-tight"
           >
-            {loveNotes.title}
+            {chapter4.title}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="font-serif italic text-base sm:text-lg text-mutedbrown mt-2"
+            className="font-serif italic text-lg sm:text-2xl text-burgundy mt-2 font-normal"
           >
-            {loveNotes.subtitle}
+            "{chapter4.subtitle}"
           </motion.p>
         </div>
 
-        {/* Romantic Corkboard / Scrapbook Grid */}
+        {/* Narrative Card with Intimate Polaroid */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="max-w-4xl mx-auto bg-[#FFFDF9] rounded-2xl shadow-journal border border-[#DEC7AA] p-6 sm:p-10 mb-14 paper-texture relative"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+            <div className="md:col-span-7 space-y-4 text-charcoal/90 font-serif text-lg leading-relaxed">
+              {chapter4.paragraphs.map((p, idx) => (
+                <p
+                  key={idx}
+                  className={
+                    idx === chapter4.paragraphs.length - 1
+                      ? "font-cormorant font-bold text-2xl sm:text-3xl text-burgundy italic pt-2"
+                      : ""
+                  }
+                >
+                  {p}
+                </p>
+              ))}
+            </div>
+
+            <div className="md:col-span-5 flex justify-center">
+              <div className="relative bg-[#FFFDF9] rounded-xl p-3.5 shadow-polaroid border border-[#DEC7AA] max-w-[240px] sm:max-w-[260px] rotate-[2deg] hover:rotate-0 transition-transform duration-300">
+                <div className="washi-tape -top-2.5 left-1/2 -translate-x-1/2 w-14" />
+                <div className="relative aspect-[3/4] w-full overflow-hidden rounded bg-cream/50 mb-2 border border-[#DEC7AA]/40 shadow-inner">
+                  <img
+                    src="/photos/couple-photo-16.webp"
+                    alt="Still my favourite person"
+                    className="w-full h-full object-cover object-top"
+                  />
+                  <span className="absolute bottom-2 right-2 text-[9px] font-mono tracking-wider bg-charcoal/70 text-ivory px-2 py-0.5 rounded backdrop-blur-sm">
+                    Just Us
+                  </span>
+                </div>
+                <div className="text-center">
+                  <p className="font-handwriting text-lg text-burgundy font-semibold">
+                    "Forever my comfort person."
+                  </p>
+                  <span className="text-[10px] text-mutedbrown font-sans uppercase tracking-wider block mt-0.5">
+                    Safe In Your Arms ❤️
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Subtitle for Little Things Notes */}
+        <div className="text-center mb-8">
+          <span className="text-xs font-serif uppercase tracking-widest text-mutedbrown block mb-1">
+            LITTLE THINGS I'LL ALWAYS CARRY WITH ME
+          </span>
+          <p className="font-handwriting text-2xl text-burgundy font-bold">
+            Unfolded scraps & quiet whispers tucked inside my pocket
+          </p>
+        </div>
+
+        {/* Romantic Scrapbook Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
-          {loveNotes.notes.map((note, index) => {
+          {chapter4.favoriteNotes.map((note, index) => {
             const rotations = ['rotate-[-2deg]', 'rotate-[2.5deg]', 'rotate-[-1.5deg]', 'rotate-[3deg]', 'rotate-[-2.8deg]', 'rotate-[1.8deg]'];
             const rotClass = rotations[index % rotations.length];
 
@@ -125,7 +191,7 @@ export const LoveNotesSection: React.FC = () => {
 
                 <div className="flex items-center gap-2 text-xs uppercase font-mono tracking-widest text-burgundy mb-4">
                   <Send className="w-4 h-4" />
-                  <span>Keepsake Postcard • For Nannaaaaa ❤️</span>
+                  <span>Keepsake Note • For {names.primaryName}</span>
                 </div>
 
                 <div className="my-6 text-center">

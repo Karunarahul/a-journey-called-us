@@ -25,14 +25,14 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPersonalizeModal }) => {
                 <Heart className="w-4 h-4 fill-ivory text-ivory" />
               </div>
               <span className="font-cormorant text-2xl font-bold tracking-wider text-ivory">
-                A Journey Called Us
+                Somewhere, It's Always You
               </span>
             </div>
             <p className="font-serif italic text-sm text-cream/80 max-w-md">
-              A personal digital travel journal dedicated to the boy who unknowingly became my favourite destination.
+              A personal birthday story dedicated to the boy who unknowingly became my favourite destination.
             </p>
             <p className="font-handwriting text-xl text-dustyrose">
-              {loveStory.recipient.birthdayGreeting}
+              {loveStory.finalPage.centralGreeting}
             </p>
           </div>
 
@@ -60,7 +60,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPersonalizeModal }) => {
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-cream/60 gap-4 text-center">
           <div className="flex items-center gap-1.5 font-sans">
             <span>Handcrafted with all my love for</span>
-            <span className="text-dustyrose font-medium">{loveStory.recipient.nickname}</span>
+            <span className="text-dustyrose font-medium">{loveStory.names.primaryName}</span>
           </div>
 
           <div className="flex items-center gap-2 font-serif text-[11px] tracking-wider uppercase text-vintagegold">

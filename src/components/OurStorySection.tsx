@@ -8,10 +8,10 @@ interface OurStorySectionProps {
 }
 
 export const OurStorySection: React.FC<OurStorySectionProps> = ({ onOpenPersonalizeModal }) => {
-  const { ourStory } = loveStory;
+  const { chapter1, names } = loveStory;
 
   return (
-    <section id="story" className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <section id="chapter1" className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Decorative Background Elements */}
       <div className="absolute top-10 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full pointer-events-none opacity-40">
         <div className="absolute top-20 left-10 w-72 h-72 rounded-full bg-dustyrose/20 blur-3xl" />
@@ -28,25 +28,25 @@ export const OurStorySection: React.FC<OurStorySectionProps> = ({ onOpenPersonal
             className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-serif uppercase tracking-widest text-burgundy bg-burgundy/10 border border-burgundy/20 mb-3"
           >
             <BookOpen className="w-3.5 h-3.5" />
-            <span>Chapter One • The Genesis</span>
+            <span>{chapter1.badge} • THE BEGINNING</span>
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="font-cormorant font-bold text-3xl sm:text-5xl text-charcoal tracking-tight leading-tight"
+            className="font-cormorant font-bold text-4xl sm:text-6xl text-charcoal tracking-tight leading-tight"
           >
-            {ourStory.title}
+            {chapter1.title}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="font-serif italic text-base sm:text-lg text-mutedbrown mt-2"
+            className="font-serif italic text-lg sm:text-2xl text-burgundy mt-2 font-normal"
           >
-            {ourStory.subtitle}
+            "{chapter1.subtitle}"
           </motion.p>
         </div>
 
@@ -75,10 +75,10 @@ export const OurStorySection: React.FC<OurStorySectionProps> = ({ onOpenPersonal
               </div>
               <div>
                 <span className="font-serif text-xs uppercase tracking-widest text-mutedbrown block">
-                  TRAVEL JOURNAL DIARY
+                  CHAPTER 01 ARCHIVE
                 </span>
                 <span className="font-cormorant italic text-lg sm:text-xl font-bold text-burgundy">
-                  From College Corridors to Forever
+                  Remember Those Initial College Days?
                 </span>
               </div>
             </div>
@@ -86,25 +86,59 @@ export const OurStorySection: React.FC<OurStorySectionProps> = ({ onOpenPersonal
             <div className="flex items-center gap-2 self-start sm:self-center">
               <span className="text-xs px-3 py-1 rounded-md bg-cream/70 border border-[#D9C6AE] text-mutedbrown-dark font-sans flex items-center gap-1.5">
                 <Calendar className="w-3.5 h-3.5 text-dustyrose-dark" />
-                {ourStory.journalDate}
+                <span>College Days Memories</span>
               </span>
             </div>
           </div>
 
-          {/* Main Journal Narrative */}
-          <div className="space-y-6 text-charcoal/90 leading-relaxed font-serif text-lg sm:text-xl max-w-3xl">
-            {ourStory.narrativeParagraphs.map((paragraph, idx) => (
-              <p
-                key={idx}
-                className={
-                  idx === 0
-                    ? "first-letter:text-5xl first-letter:font-cormorant first-letter:text-burgundy first-letter:font-bold first-letter:float-left first-letter:mr-3 first-letter:leading-none"
-                    : ""
-                }
-              >
-                {paragraph}
-              </p>
-            ))}
+          {/* Main Journal Narrative with Authentic College Polaroid */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-8">
+            <div className="lg:col-span-7 space-y-5 text-charcoal/90 leading-relaxed font-serif text-lg sm:text-xl">
+              {chapter1.paragraphs.map((paragraph, idx) => (
+                <p
+                  key={idx}
+                  className={
+                    idx === 0
+                      ? "first-letter:text-5xl first-letter:font-cormorant first-letter:text-burgundy first-letter:font-bold first-letter:float-left first-letter:mr-3 first-letter:leading-none"
+                      : ""
+                  }
+                >
+                  {paragraph}
+                </p>
+              ))}
+
+              {/* Chapter Accent Note */}
+              <div className="mt-6 p-4 bg-cream/40 rounded-xl border-l-4 border-burgundy">
+                <p className="font-handwriting text-2xl text-burgundy font-bold">
+                  *{chapter1.footerNote}*
+                </p>
+              </div>
+            </div>
+
+            {/* Pinned Real College Photo Polaroid */}
+            <div className="lg:col-span-5 flex flex-col items-center justify-center pt-2">
+              <div className="relative bg-[#FFFDF9] rounded-xl p-4 shadow-polaroid border border-[#DEC7AA] max-w-[280px] sm:max-w-[300px] rotate-[2deg] hover:rotate-0 transition-transform duration-300">
+                <div className="washi-tape -top-3 left-1/2 -translate-x-1/2" />
+                <div className="relative aspect-[3/4] w-full overflow-hidden rounded bg-cream/50 mb-3 border border-[#DEC7AA]/40 shadow-inner">
+                  <img
+                    src="/photos/couple-photo-10.webp"
+                    alt="Our college days together"
+                    className="w-full h-full object-cover object-top"
+                  />
+                  <span className="absolute bottom-2 right-2 text-[9px] font-mono tracking-wider bg-charcoal/70 text-ivory px-2 py-0.5 rounded backdrop-blur-sm">
+                    College Days
+                  </span>
+                </div>
+                <div className="text-center">
+                  <p className="font-handwriting text-xl text-burgundy font-semibold">
+                    "Where it all began. Just us."
+                  </p>
+                  <span className="text-[10px] text-mutedbrown font-sans uppercase tracking-wider block mt-0.5">
+                    College Campus • Initial Days
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Handcrafted Memory Placeholders Grid */}
@@ -132,13 +166,13 @@ export const OurStorySection: React.FC<OurStorySectionProps> = ({ onOpenPersonal
               <div className="p-4 rounded-xl bg-ivory/60 border border-cream hover:border-dustyrose transition-colors relative group">
                 <div className="flex items-center gap-2 text-xs font-serif text-mutedbrown uppercase tracking-wider mb-1">
                   <Calendar className="w-3.5 h-3.5 text-burgundy" />
-                  <span>{ourStory.placeholders.firstMeetingDate.label}</span>
+                  <span>{chapter1.placeholders.firstMeetingDate.label}</span>
                 </div>
                 <div className="font-handwriting text-xl text-burgundy font-semibold">
-                  {ourStory.placeholders.firstMeetingDate.value}
+                  {chapter1.placeholders.firstMeetingDate.value}
                 </div>
                 <div className="text-[10px] text-mutedbrown/70 mt-1 italic">
-                  {ourStory.placeholders.firstMeetingDate.note}
+                  {chapter1.placeholders.firstMeetingDate.note}
                 </div>
               </div>
 
@@ -146,13 +180,13 @@ export const OurStorySection: React.FC<OurStorySectionProps> = ({ onOpenPersonal
               <div className="p-4 rounded-xl bg-ivory/60 border border-cream hover:border-dustyrose transition-colors relative group">
                 <div className="flex items-center gap-2 text-xs font-serif text-mutedbrown uppercase tracking-wider mb-1">
                   <MapPin className="w-3.5 h-3.5 text-burgundy" />
-                  <span>{ourStory.placeholders.collegeName.label}</span>
+                  <span>{chapter1.placeholders.collegeName.label}</span>
                 </div>
                 <div className="font-handwriting text-xl text-burgundy font-semibold">
-                  {ourStory.placeholders.collegeName.value}
+                  {chapter1.placeholders.collegeName.value}
                 </div>
                 <div className="text-[10px] text-mutedbrown/70 mt-1 italic">
-                  {ourStory.placeholders.collegeName.note}
+                  {chapter1.placeholders.collegeName.note}
                 </div>
               </div>
 
@@ -160,13 +194,13 @@ export const OurStorySection: React.FC<OurStorySectionProps> = ({ onOpenPersonal
               <div className="p-4 rounded-xl bg-ivory/60 border border-cream hover:border-dustyrose transition-colors relative group">
                 <div className="flex items-center gap-2 text-xs font-serif text-mutedbrown uppercase tracking-wider mb-1">
                   <MessageCircleHeart className="w-3.5 h-3.5 text-burgundy" />
-                  <span>{ourStory.placeholders.firstConversation.label}</span>
+                  <span>{chapter1.placeholders.firstConversation.label}</span>
                 </div>
                 <div className="font-handwriting text-xl text-burgundy font-semibold">
-                  {ourStory.placeholders.firstConversation.value}
+                  {chapter1.placeholders.firstConversation.value}
                 </div>
                 <div className="text-[10px] text-mutedbrown/70 mt-1 italic">
-                  {ourStory.placeholders.firstConversation.note}
+                  {chapter1.placeholders.firstConversation.note}
                 </div>
               </div>
 
@@ -174,13 +208,13 @@ export const OurStorySection: React.FC<OurStorySectionProps> = ({ onOpenPersonal
               <div className="p-4 rounded-xl bg-ivory/60 border border-cream hover:border-dustyrose transition-colors relative group">
                 <div className="flex items-center gap-2 text-xs font-serif text-mutedbrown uppercase tracking-wider mb-1">
                   <Sparkles className="w-3.5 h-3.5 text-burgundy" />
-                  <span>{ourStory.placeholders.firstMemorableMoment.label}</span>
+                  <span>{chapter1.placeholders.firstMemorableMoment.label}</span>
                 </div>
                 <div className="font-handwriting text-xl text-burgundy font-semibold">
-                  {ourStory.placeholders.firstMemorableMoment.value}
+                  {chapter1.placeholders.firstMemorableMoment.value}
                 </div>
                 <div className="text-[10px] text-mutedbrown/70 mt-1 italic">
-                  {ourStory.placeholders.firstMemorableMoment.note}
+                  {chapter1.placeholders.firstMemorableMoment.note}
                 </div>
               </div>
             </div>
@@ -189,12 +223,12 @@ export const OurStorySection: React.FC<OurStorySectionProps> = ({ onOpenPersonal
           {/* Journal Footer Signature */}
           <div className="mt-10 pt-6 border-t border-[#E8DFC8]/60 flex flex-col sm:flex-row items-center justify-between text-xs text-mutedbrown gap-3">
             <span className="font-serif italic">
-              {ourStory.bottomSignature}
+              Written with all my heart • From the girl who loves you endlessly
             </span>
             <div className="flex items-center gap-2">
               <span className="inline-block w-2 h-2 rounded-full bg-burgundy" />
               <span className="font-handwriting text-base text-charcoal">
-                Dedicated to Nannaaaaa ❤️
+                Dedicated to {names.primaryName}
               </span>
             </div>
           </div>

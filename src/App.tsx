@@ -4,11 +4,10 @@ import { PetalParticles } from './components/PetalParticles';
 import { OpeningEnvelope } from './components/OpeningEnvelope';
 import { HeroSection } from './components/HeroSection';
 import { OurStorySection } from './components/OurStorySection';
-import { TimelineSection } from './components/TimelineSection';
-import { LoveNotesSection } from './components/LoveNotesSection';
-import { StormsWeCrossedSection } from './components/StormsWeCrossedSection';
 import { MemoryAlbumSection } from './components/MemoryAlbumSection';
-import { ReasonsSection } from './components/ReasonsSection';
+import { StormsWeCrossedSection } from './components/StormsWeCrossedSection';
+import { LoveNotesSection } from './components/LoveNotesSection';
+import { Chapter5BirthdaySection } from './components/Chapter5BirthdaySection';
 import { BirthdayLetterSection } from './components/BirthdayLetterSection';
 import { FinalDestinationSection } from './components/FinalDestinationSection';
 import { Footer } from './components/Footer';
@@ -57,31 +56,28 @@ export const App: React.FC = () => {
 
       {/* Main Website Sections */}
       <main className="relative z-10">
-        {/* Section 3: Hero */}
+        {/* Hero: SOMEWHERE, IT'S ALWAYS YOU. */}
         <HeroSection />
 
-        {/* Section 4: Our Story - Where It All Started */}
+        {/* Chapter 01 — THE BEGINNING: "And just like that, life had a plot twist." */}
         <OurStorySection onOpenPersonalizeModal={() => setPersonalizeModalOpen(true)} />
 
-        {/* Section 5: Our Journey - Relationship Timeline */}
-        <TimelineSection />
-
-        {/* Section 6: The Little Things - Love Notes */}
-        <LoveNotesSection />
-
-        {/* Section 7: The Storms We Crossed - Our Love Isn't Perfect, It's Real */}
-        <StormsWeCrossedSection />
-
-        {/* Section 8: Our Memory Album - Polaroid Gallery */}
+        {/* Chapter 02 — OUR LITTLE WORLD: "Some of my favourite memories have you in them." */}
         <MemoryAlbumSection onOpenPersonalizeModal={() => setPersonalizeModalOpen(true)} />
 
-        {/* Section 9: A Thousand Reasons - Why You? */}
-        <ReasonsSection />
+        {/* Chapter 03 — THE UNEXPECTED ROUTES: "Okay, let's be honest. We're not always cute." */}
+        <StormsWeCrossedSection />
 
-        {/* Section 10: The Birthday Letter - The Heart of the Website */}
+        {/* Chapter 04 — STILL MY FAVOURITE PERSON: "After all the chapters, it's still you." */}
+        <LoveNotesSection />
+
+        {/* Chapter 05 — IT'S YOUR DAY!: "Today, my favourite boy gets all the attention." */}
+        <Chapter5BirthdaySection />
+
+        {/* THE LETTER — FROM MY HEART TO YOURS: "A little something I wanted to say." */}
         <BirthdayLetterSection />
 
-        {/* Section 11: Final Destination - The Endless Journey */}
+        {/* THE FINAL PAGE: "The journey is nowhere near over." */}
         <FinalDestinationSection onReplayStory={handleReplayStory} />
       </main>
 
